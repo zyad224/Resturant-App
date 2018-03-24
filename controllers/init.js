@@ -10,8 +10,15 @@ exports.init= function() {
     // });
     var restaurant = new Restaurant({
         rest_name: "abc",
-        cusine_type: "abc"
+        cusine_type: "abc",
+        ranking: 1,
+        feedback: "abc",
+        postcode:"abc",
+        lat:1,
+        long:1,
+        image:1
     });
+
 
     restaurant.save(function (err, results) {
         console.log(results._id);

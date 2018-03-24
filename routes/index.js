@@ -3,7 +3,7 @@ var router = express.Router();
 var bodyParser= require("body-parser");
 
 
-var character = require('../controllers/restaurants');
+var rest = require('../controllers/restaurants');
 var initDB= require('../controllers/init');
 initDB.init();
 
@@ -13,15 +13,7 @@ router.get('/index', function(req, res, next) {
   res.render('index', { title: 'My Form' });
 });
 
-router.post('/index', character.getAge);
 
-
-/* GET home page. */
-router.get('/insert', function(req, res, next) {
-  res.render('insert', { title: 'My Form' });
-});
-
-router.post('/insert', character.insert);
-
+router.post('/index', rest.getRest);
 
 module.exports = router;
