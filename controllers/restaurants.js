@@ -5,7 +5,7 @@ exports.getAge = function (req, res) {
     if (userData == null) {
         res.status(403).send('No data sent!')
     }
-    try {   /// changae character to restaurant
+    try {
         Character.find({first_name: userData.firstname, family_name: userData.lastname},
             'first_name family_name dob age',
             function (err, characters) {
