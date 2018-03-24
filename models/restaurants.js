@@ -17,3 +17,6 @@ var Restaurant = new Schema(
     }
 );
 
+var restaurantModel = mongoose.model('Restaurant', Restaurant );
+
+module.exports = restaurantModel;
