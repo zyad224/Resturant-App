@@ -6,7 +6,7 @@ var Restaurant = new Schema(
     {
         rest_name: {type: String, max: 100},
         cusine_type: {type: String,max: 100},
-        ranking: {type: Number},
+        ranking: {type: String},
         feedback: {type: String},
         postcode:{type:String},
         lat:{type:Number},
