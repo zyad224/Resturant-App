@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #map {
+            height: 800px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+    function initMap() {
+        var sheffield = {lat: 53.382576, lng: -1.487279};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: sheffield,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+        });
+        var marker = new google.maps.Marker({
+            position: sheffield,
+            map: map
+        });
+        var contentString = '<div id="content">'+ '<h1>Sheffield</h1>'+'<img src="http://www.futuregraduates.org.uk/upload/posts/news/sheffield_visit_1.jpg" width="70px" height="70px">'+'</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        google.maps.event.addListener(marker, 'click', function () {
+            infowindow.open(map, marker);
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcm6sCcEcvIHv7ILLDVSDbbkN2SOBgGmw&callback=initMap">
+</script>
+</body>
+</html>
+

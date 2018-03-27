@@ -13,7 +13,6 @@ router.get('/index', function(req, res, next) {
   res.render('index', { title: 'My Form' });
 });
 
-
 router.post('/index', rest.getRest);
 
 module.exports = router;
