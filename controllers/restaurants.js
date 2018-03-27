@@ -1,8 +1,4 @@
 var Restaurant = require('../models/restaurants');
-
-
-
-
 /*
 This method is responsible to fetch the rquested
 data from the system database then return the data
@@ -10,7 +6,6 @@ in a json format to the html page (front end).
  */
 exports.getRest = function (req, res) {
     var userData = req.body;
-    var totalRestaurants;
 
     if (userData == null) {
         res.status(403).send('No data sent!')
@@ -37,13 +32,9 @@ exports.getRest = function (req, res) {
                                        return Restaurant.find(queryRestaurantPostcode).exec()
                                            .then(function(result5){
                                                return [result1,result2,result3,result4,result5];
-
                                            });
-
                                    })
-
                            })
-
                    })
            }).then(function(finalResult){
             res.send(JSON.stringify(finalResult));
