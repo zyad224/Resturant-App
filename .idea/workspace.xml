@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8867d472-a85c-4071-b1f3-fee3d4c85450" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/controllers/init.js" afterPath="$PROJECT_DIR$/controllers/init.js" />
-      <change beforePath="$PROJECT_DIR$/controllers/restaurants.js" afterPath="$PROJECT_DIR$/controllers/restaurants.js" />
-      <change beforePath="$PROJECT_DIR$/models/restaurants.js" afterPath="$PROJECT_DIR$/models/restaurants.js" />
-    </list>
+    <list default="true" id="8867d472-a85c-4071-b1f3-fee3d4c85450" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -186,7 +181,7 @@
     <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="273" />
     <option name="y" value="236" />
     <option name="width" value="1280" />
@@ -402,15 +397,15 @@
       <workItem from="1521920850810" duration="2021000" />
       <workItem from="1521922914955" duration="2892000" />
       <workItem from="1521993589928" duration="7879000" />
-      <workItem from="1522053225164" duration="7268000" />
+      <workItem from="1522053225164" duration="7339000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52744000" />
+    <option name="totallyTimeSpent" value="52815000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
