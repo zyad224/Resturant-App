@@ -1,4 +1,15 @@
 var Restaurant = require('../models/restaurants');
+<<<<<<< HEAD
+=======
+var express =   require("express");
+var multer  =   require('multer');
+var path = require('path');
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+
+
+
+>>>>>>> 027a6fd14f83b0b55f371f1b86be4b6458493440
 /*
 This method is responsible to fetch the rquested
 data from the system database then return the data
@@ -58,10 +69,10 @@ exports.insert = function (req, res) {
             cusine_type: userData.cusine,
             ranking: userData.rank,
             feedback: userData.feed,
-            postcode: userData.postc
-          //  image: userData.blah
+            postcode: userData.postc,
+            image: userData.file
         });
-        console.log('received: ' + character);
+        console.log('received: ' + character.image);
 
         character.save(function (err, results) {
             console.log(results._id);
