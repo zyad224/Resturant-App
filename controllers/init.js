@@ -3,11 +3,10 @@ var Restaurant = require('../models/restaurants');
 
 
 exports.init= function() {
-    // uncomment if you need to drop the database
-    //
-    // Character.remove({}, function(err) {
-    //    console.log('collection removed')
-    // });
+
+   /* Character.remove({}, function(err) {
+       console.log('collection removed')
+    });*/
     var restaurant1 = new Restaurant({
         rest_name: "abc",
         cusine_type: "c",

@@ -5,24 +5,49 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="/javascripts/index.js"></script>
-
+      <!--<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>-->
+      <!--<meta charset=utf-8 />-->
   </head>
   <body>
     <h1><%= title %></h1>
 
 
     <form id=“xForm" onsubmit="onSubmit('/insert')">
-        <label for='firstname'>First name:</label>
-        <input type="text" name="firstname" id="firstname" value="Mickey">
-        <p><label for='lastname'>Last name:</label>
-                <input type="text" name="lastname" id="lastname" value="Mouse">
+        <label for='restaurant'>Restaurant:</label>
+        <input type="text" name="rest" id="rest" value="Mickey">
+        <p><label for='cusinetype'>Cusine Type:</label>
+                <input type="text" name="cusine" id="cusine" value="Mouse">
         </p>
-        <p><label for='year'>Year of Birth:</label>
-                <input type="number" name="year" id="year" value="1900">
+        <p><label for='ranking'>Ranking:</label>
+                <input type="text" name="rank" id="rank" value="1900">
         </p>
+        <p><label for='feedback'>Feedback:</label>
+            <input type="text" name="feed" id="feed" value="1900">
+        </p>
+        <p><label for='postcode'>Post Code:</label>
+            <input type="text" name="postc" id="postc" value="1900">
+        </p>
+        <input type='file' onchange="readURL(this);" />
+        <img id="blah" src="#" alt="your image" />
         <p><input type="submit" name="g" value="Submit" id="g"></p>
     </form>
   <div id="results" style="margin-top:30px"></div>
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }</script>
 
   </body>
 </html>
