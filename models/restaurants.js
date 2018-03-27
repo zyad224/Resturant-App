@@ -11,7 +11,7 @@ var Restaurant = new Schema(
         postcode:{type:String},
         lat:{type:Number},
         long:{type:Number},
-        image:{type:String}
+        image:{ type:String }
     }
 );
 

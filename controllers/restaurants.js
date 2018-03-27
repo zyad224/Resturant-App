@@ -1,5 +1,9 @@
 var Restaurant = require('../models/restaurants');
-
+var express =   require("express");
+var multer  =   require('multer');
+var path = require('path');
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 
 
 
@@ -67,10 +71,10 @@ exports.insert = function (req, res) {
             cusine_type: userData.cusine,
             ranking: userData.rank,
             feedback: userData.feed,
-            postcode: userData.postc
-          //  image: userData.blah
+            postcode: userData.postc,
+            image: userData.file
         });
-        console.log('received: ' + character);
+        console.log('received: ' + character.image);
 
         character.save(function (err, results) {
             console.log(results._id);
