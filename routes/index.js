@@ -13,7 +13,11 @@ router.get('/index', function(req, res, next) {
   res.render('index', { title: 'My Form' });
 });
 
-
+/* GET insert page. */
+router.get('/insert', function(req, res, next) {
+    res.render('insert', { title: 'My Form' });
+});
+router.post('/insert',rest.addRest);
 router.post('/index', rest.getRest);
 
 module.exports = router;
