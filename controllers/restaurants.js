@@ -54,35 +54,31 @@ exports.getRest = function (req, res) {
     }
 }
 
-exports.addRest=function(req,res){
-    var userData = req.body;
-    console.log('received: ' + userData);
 
+
+exports.insert = function (req, res) {
+    var userData = req.body;
     if (userData == null) {
         res.status(403).send('No data sent!')
     }
-
     try {
-
-        var newRestaurant = new Restaurant ({
+        var character = new Restaurant({
             rest_name: userData.rest,
             cusine_type: userData.cusine,
             ranking: userData.rank,
             feedback: userData.feed,
-            postcode: userData.postc,
-            image: userData.blah
-
+            postcode: userData.postc
+          //  image: userData.blah
         });
+        console.log('received: ' + character);
 
-        console.log('received: ' + newRestaurant);
-
-        newRestaurant.save(function (err, results) {
+        character.save(function (err, results) {
             console.log(results._id);
             if (err)
                 res.status(500).send('Invalid data!');
 
             res.setHeader('Content-Type', 'application/json');
-            res.send(JSON.stringify(newRestaurant));
+            res.send(JSON.stringify(character));
         });
     } catch (e) {
         res.status(500).send('error ' + e);

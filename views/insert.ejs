@@ -27,27 +27,27 @@
         <p><label for='postcode'>Post Code:</label>
             <input type="text" name="postc" id="postc" value="1900">
         </p>
-        <!--<input type='file' onchange="readURL(this);" />-->
-        <!--<img id="blah" src="#" alt="your image" />-->
+        <input type='file' onchange="readURL(this);" />
+        <img id="blah" src="#" alt="your image" />
         <p><input type="submit" name="g" value="Submit" id="g"></p>
     </form>
   <div id="results" style="margin-top:30px"></div>
 
-<!--<script>-->
-    <!--function readURL(input) {-->
-        <!--if (input.files && input.files[0]) {-->
-            <!--var reader = new FileReader();-->
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
-            <!--reader.onload = function (e) {-->
-                <!--$('#blah')-->
-                    <!--.attr('src', e.target.result)-->
-                    <!--.width(150)-->
-                    <!--.height(200);-->
-            <!--};-->
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
 
-            <!--reader.readAsDataURL(input.files[0]);-->
-        <!--}-->
-    <!--}</script>-->
+            reader.readAsDataURL(input.files[0]);
+        }
+    }</script>
 
   </body>
 </html>
