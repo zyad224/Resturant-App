@@ -12,6 +12,8 @@ function sendAjaxQuery(url, data) {
 
             // in order to have the object printed by alert
             // we need to JSON stringify the object
+            var content = "";
+            $("#ProductList").empty();
 
             $.each(ret,function(i,j){
 
