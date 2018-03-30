@@ -15,6 +15,10 @@ router.get('/index', function(req, res, next) {
 
 router.post('/index', rest.getRest);
 
+router.get('/map',function(req,res,next){
+   res.render('map');
+});
+
 /* GET insert page. */
 router.get('/insert', function(req, res, next) {
     res.render('insert', { title: 'My Form' });
