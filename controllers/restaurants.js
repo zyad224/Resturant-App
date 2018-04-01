@@ -52,8 +52,6 @@ exports.getRest = function (req, res) {
     }
 }
 
-
-
 exports.insert = function (req, res) {
     var userData = req.body;
     if (userData == null) {
