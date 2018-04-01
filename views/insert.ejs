@@ -29,6 +29,11 @@
         </p>
         <p><input type="submit" name="g" value="Submit" id="g"></p>
     </form>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        Select file to upload:
+        <input type="file" name="avatar" id="fileToUpload">
+        <input type="submit" value="Upload File" name="submit">
+    </form>
   <div id="results" style="margin-top:30px"></div>
 
   </body>
