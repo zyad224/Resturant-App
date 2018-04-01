@@ -22,15 +22,6 @@ router.get('/insert', function(req, res, next) {
 });
 router.post('/insert',rest.insert);
 
-router.post('/upload', function (req, res) {
-    req.file('avatar').upload({dirname:'../../public/avatar'},function (err, uploadedFiles) {
-
-        if (err) return res.send(500, err);
-        return res.json({
-            message: uploadedFiles.length + ' file(s) uploaded successfully!',
-            files: uploadedFiles
-        });
-    });
-});
+router.post('/upload',rest.uploadImage);
 
 module.exports = router;

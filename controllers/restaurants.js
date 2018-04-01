@@ -52,6 +52,18 @@ exports.getRest = function (req, res) {
     }
 }
 
+exports.uploadImage=function (req, res) {
+    req.file('avatar').upload({dirname:'../../public/avatar'},function (err, uploadedFiles) {
+
+        if (err) return res.send(500, err);
+        return res.json({
+            message: uploadedFiles.length + ' file(s) uploaded successfully!',
+            files: uploadedFiles
+        });
+    });
+
+};
+
 exports.insert = function (req, res) {
     var userData = req.body;
     if (userData == null) {
