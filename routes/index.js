@@ -16,6 +16,10 @@ router.get('/map',function(req,res,next){
    res.render('map');
 });
 
+router.get('/geolocation',function(req,res,next){
+    res.render('geolocation');
+});
+
 /* GET insert page. */
 router.get('/insert', function(req, res, next) {
     res.render('insert', { title: 'My Form' });

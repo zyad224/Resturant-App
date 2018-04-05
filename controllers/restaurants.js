@@ -54,13 +54,13 @@ exports.getRest = function (req, res) {
 
 exports.uploadImage=function (req, res) {
     req.file('avatar').upload({dirname:'../../public/avatar'},function (err, uploadedFiles) {
-
         if (err) return res.send(500, err);
         return res.json({
             message: uploadedFiles.length + ' file(s) uploaded successfully!',
-            files: uploadedFiles
+            files: uploadedFiles[0].fd
         });
     });
+//db start
 
 };
 
@@ -70,7 +70,7 @@ exports.insert = function (req, res) {
         res.status(403).send('No data sent!')
     }
     try {
-        var character = new Restaurant({
+        var restaurant = new Restaurant({
             rest_name: userData.rest,
             cusine_type: userData.cusine,
             ranking: userData.rank,
@@ -78,15 +78,14 @@ exports.insert = function (req, res) {
             postcode: userData.postc,
             image: userData.file
         });
-        console.log('received: ' + character.image);
 
-        character.save(function (err, results) {
+        restaurant.save(function (err, results) {
             console.log(results._id);
             if (err)
                 res.status(500).send('Invalid data!');
 
             res.setHeader('Content-Type', 'application/json');
-            res.send(JSON.stringify(character));
+            res.send(JSON.stringify(restaurant));
         });
     } catch (e) {
         res.status(500).send('error ' + e);
