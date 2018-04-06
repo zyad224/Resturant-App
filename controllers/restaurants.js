@@ -56,17 +56,29 @@ exports.uploadImage=function (req, res) {
     req.file('avatar').upload({dirname:'../../public/avatar'},function (err, uploadedFiles) {
         if (err) return res.send(500, err);
         var path=uploadedFiles[0].fd;
-        console.log(path);
+       console.log(path);
+
+        // Restaurant.findOne({}, {}, { sort: { 'created_at' : -1 } }, function(err, post) {
+        //     console.log( post );
+        // });
         try{
 
-            var restaurant=new Restaurant({
-                image:path
+            var myquery = { image:null};
+            var newvalues = { $set: { image: path } };
+            Restaurant.updateOne(myquery, newvalues, function(err, res) {
+                if (err) throw err;
+                console.log("1 document updated");
+                //db.close();
             });
-            restaurant.save(function (err, results) {
-                console.log(results._id);
-                if (err)
-                    res.status(500).send('Invalid data!');
-            });
+
+            // var restaurant=new Restaurant({
+            //     image:path
+            // });
+            // restaurant.save(function (err, results) {
+            //     console.log(results._id);
+            //     if (err)
+            //         res.status(500).send('Invalid data!');
+            // });
         } catch (e) {
             res.status(500).send('error ' + e);
         }
