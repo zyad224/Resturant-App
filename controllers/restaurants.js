@@ -68,7 +68,7 @@ exports.uploadImage=function (req, res) {
             Restaurant.updateOne(myquery, newvalues, function(err, res) {
                 if (err) throw err;
                 console.log("1 document updated");
-                //db.close();
+                Restaurant.close();
             });
 
             // var restaurant=new Restaurant({
@@ -115,5 +115,28 @@ exports.insert = function (req, res) {
         });
     } catch (e) {
         res.status(500).send('error ' + e);
+    }
+}
+
+exports.getSpecificRest= function(req,res){
+    var restID = req.body;
+
+    if (restID == null) {
+        res.status(403).send('No data sent!')
+    }
+
+    try{
+        var queryRestaurantID = { _id: restID };
+        Restaurant.find(queryRestaurantID).exec()
+            .then(function(result){
+                res.send(JSON.stringify(result));
+
+        });
+
+
+
+    } catch (e){
+        res.status(500).send('error ' + e);
+
     }
 }
