@@ -55,8 +55,8 @@ exports.getRest = function (req, res) {
 exports.uploadImage=function (req, res) {
     req.file('avatar').upload({dirname:'../../public/avatar'},function (err, uploadedFiles) {
         if (err) return res.send(500, err);
-        var index=uploadedFiles[0].fd.indexOf("public");
-        var path=uploadedFiles[0].fd.slice(index-1);
+        var index=uploadedFiles[0].fd.indexOf("avatar");
+        var path="http://localhost:3003"+uploadedFiles[0].fd.slice(index-1);
        console.log(path);
 
         // Restaurant.findOne({}, {}, { sort: { 'created_at' : -1 } }, function(err, post) {
@@ -69,7 +69,6 @@ exports.uploadImage=function (req, res) {
             Restaurant.updateOne(myquery, newvalues, function(err, res) {
                 if (err) throw err;
                 console.log("1 document updated");
-                Restaurant.close();
             });
 
             // var restaurant=new Restaurant({
