@@ -55,13 +55,27 @@ exports.getRest = function (req, res) {
 exports.uploadImage=function (req, res) {
     req.file('avatar').upload({dirname:'../../public/avatar'},function (err, uploadedFiles) {
         if (err) return res.send(500, err);
-        return res.json({
-            message: uploadedFiles.length + ' file(s) uploaded successfully!',
-            files: uploadedFiles[0].fd
-        });
-    });
-//db start
+        var path=uploadedFiles[0].fd;
+        console.log(path);
+        try{
 
+            var restaurant=new Restaurant({
+                image:path
+            });
+            restaurant.save(function (err, results) {
+                console.log(results._id);
+                if (err)
+                    res.status(500).send('Invalid data!');
+            });
+        } catch (e) {
+            res.status(500).send('error ' + e);
+        }
+
+        // return res.json({
+        //     message: uploadedFiles.length + ' file(s) uploaded successfully!',
+        //     files: uploadedFiles[0].fd
+        // });
+    });
 };
 
 exports.insert = function (req, res) {
