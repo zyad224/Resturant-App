@@ -55,7 +55,8 @@ exports.getRest = function (req, res) {
 exports.uploadImage=function (req, res) {
     req.file('avatar').upload({dirname:'../../public/avatar'},function (err, uploadedFiles) {
         if (err) return res.send(500, err);
-        var path=uploadedFiles[0].fd;
+        var index=uploadedFiles[0].fd.indexOf("public");
+        var path=uploadedFiles[0].fd.slice(index-1);
        console.log(path);
 
         // Restaurant.findOne({}, {}, { sort: { 'created_at' : -1 } }, function(err, post) {

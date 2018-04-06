@@ -30,12 +30,25 @@
     <form action="/upload" method="post" enctype="multipart/form-data">
         Select file to upload:
         <input type="file" name="avatar" id="fileToUpload">
-        <input type="submit" value="Upload File" name="submit">
+        <input type="submit" value="Upload File" name="submit" id="submitImage">
     </form>
   <div id="results" style="margin-top:30px"></div>
+
+  <script>
+    var sub=document.getElementById("g"),
+        hidefile=document.getElementById("fileToUpload"),
+        hidesubmit=document.getElementById("submitImage");
+        sub.onclick=function(){
+          this.form.submit;
+          hidefile.style.display="inline";
+          hidesubmit.style.display="inline";
+        }
+
+  </script>
 
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="/javascripts/index.js"></script>
   </body>
 </html>
+
