@@ -79,6 +79,7 @@ exports.uploadImage=function (req, res) {
             //     if (err)
             //         res.status(500).send('Invalid data!');
             // });
+            res.render('upload', { title: 'My Form' });
         } catch (e) {
             res.status(500).send('error ' + e);
         }
