@@ -5,32 +5,40 @@ function sendAjaxQuery(url, data) {
         dataType: 'json',
         type: 'POST',
         success: function (dataR) {
-            // no need to JSON parse the result, as we are using
-            // dataType:json, so JQuery knows it and unpacks the
-            // object for us before returning it
-            var ret = dataR;
-
-            // in order to have the object printed by alert
-            // we need to JSON stringify the object
             var content = "";
             $("#ProductList").empty();
 
-            $.each(ret,function(i,j){
+            for (var i = 0; i < dataR.length; i++) {
+                var restaurant = dataR[i];
+                for(var j = 0; j < restaurant.length; j++){
 
-                content = '<ul class="w3-ul w3-card-4"><li class="w3-bar">' +
-                    '<span class="w3-bar-item w3-button w3-white w3-xlarge w3-right">+</span>' +
-                    '<img src="Images/img_avatar2.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">' +
-                    '<div id="ProductList" class="w3-bar-item"><span class="w3-large">'
-                    +"Restaurant Name: "+j[i].rest_name+" "
-                    +"Cusine Type: "+" " +j[i].cusine_type+" "
-                    +"Ranking" + " " + j[i].ranking + " "
-                    +"Feedback" + " " + j[i].feedback + " "
-                    +"postcode" + " " + j[i].postcode + " "
-                    +"Image" + " " + j[i].image + "" +
-                    '</span>'+'</div></li></ul>';
-                $('#ProductList').append(content);
-            });
+                    var id = restaurant[j]._id;
+                    var name = restaurant[j].rest_name;
+                    var type  = restaurant[j].cusine_type;
+                    var rank = restaurant[j].ranking;
+                    var feed = restaurant[j].feedback;
+                    var post = restaurant[j].postcode;
+                    var image = restaurant[j].image;
 
+                    content = '<ul class="w3-ul w3-card-4">' +
+                        '<li class="w3-bar">' +
+                        '<div id="rests" class="w3-bar-item">'
+                        +"Restaurant ID: "+id+" "
+                        +"Restaurant Name: "+name+" "
+                        +"Cusine Type: "+" " +type+" "
+                        +"Ranking" + " " + rank+ " "
+                        +"Feedback" + " " + feed+ " "
+                        +"postcode" + " " + post+ " "
+                        +"Image" + " " +image+ "" +
+                        '</div></li></ul>';
+                    //check the id if it does not exist, append
+                    if($("#" + id).length == 0) {
+                        $('#ProductList').append(content);
+                        //change div id as a _id
+                        $('#rests').attr('id',id);
+                    }
+               }
+            }
            //document.getElementById('results').innerHTML = JSON.stringify(ret);
         },
         error: function (xhr, status, error) {
@@ -38,6 +46,7 @@ function sendAjaxQuery(url, data) {
         }
     });
 }
+
 
 function onSubmit(url) {
     var formArray= $("form").serializeArray();

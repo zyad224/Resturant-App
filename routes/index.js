@@ -24,8 +24,16 @@ router.get('/geolocation',function(req,res,next){
 router.get('/insert', function(req, res, next) {
     res.render('insert', { title: 'My Form' });
 });
+
+router.post('/index',rest.getRest);
+
 router.post('/insert',rest.insert);
 
 router.post('/upload',rest.uploadImage);
+
+/*Restaurant*/
+router.get('/restaurant',rest.getSpecificRest);
+   // res.render('restaurant');
+
 
 module.exports = router;

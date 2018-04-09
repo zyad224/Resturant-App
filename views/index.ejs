@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="/javascripts/index.js"></script>
+<head>
+  <title><%= title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/javascripts/index.js"></script>
+  <script src="/javascripts/processRestaurantData.js"></script>
+</head>
+<body>
+<h1><%= title %></h1>
+<form id=“xForm" onsubmit="onSubmit('/index')">
+  <input type="text" name="rest" id="rest" >
+  <p>
+    <input type="submit" name="g" value="Submit" id="g">
+  </p>
+</form>
 
-  </head>
-  <body>
+<div onclick="processData('/restaurant')" id="ProductList" class="w3-container" style="margin-top:30px"></div>
 
-
-
-
-
-
-    <form id=“xForm" onsubmit="onSubmit('/index')">
-
-        <input type="text" name="rest" id="rest" >
-
-        <p><input type="submit" name="g" value="Submit" id="g"></p>
-    </form>
-
-    <div id="ProductList" class="w3-container" style="margin-top:30px"></div>
-  </body>
+</body>
 </html>
