@@ -10,6 +10,7 @@ exports.init= function() {
     var restaurant1 = new Restaurant({
         rest_name: "KFC",
         cusine_type: "English",
+        telephone:"0101530101020",
         ranking: 1,
         feedback: "abc",
         postcode:"S3 7LJ",
@@ -20,6 +21,7 @@ exports.init= function() {
     var restaurant2 = new Restaurant({
         rest_name: "Domino",
         cusine_type: "English",
+        telephone:"01010101020",
         ranking: 2,
         feedback: "doo",
         postcode:"S3 8NU",
@@ -29,6 +31,7 @@ exports.init= function() {
     var restaurant3 = new Restaurant({
         rest_name: "cosmo",
         cusine_type: "English",
+        telephone:"01010101020",
         ranking: 1,
         feedback: "doo",
         postcode:"S3 7LJ",

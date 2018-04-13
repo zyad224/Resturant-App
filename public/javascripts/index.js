@@ -1,6 +1,8 @@
 var mapp;
 var markers=[];
 var userPos;
+var pCode;
+var nameRest;
 function initMap() {
      mapp = new google.maps.Map(document.getElementById('map'), {
          center: {lat: 53.381812, lng: -1.482064},
@@ -82,18 +84,23 @@ function map(url, data) {
         type: 'POST',
         success: function (dataR) {
             var content = "";
-            console.log(dataR[0]);
-            var pCode= dataR[0];
-            var nameRest=dataR[1];
+           // console.log(dataR[0]);
+          //  console.log(dataR[1]);
+
+             pCode= dataR[0];
+             nameRest=dataR[1];
+             var allRest= pCode.concat(nameRest);
+             console.log(allRest);
 
             clearMarkers();
-            var userLatLng= new google.maps.LatLng(userPos.lat,userPos.lng);
-            var infoWindow=new google.maps.InfoWindow({map:mapp});
 
-           for(var i=0;i<pCode.length;i++){
+            var userLatLng= new google.maps.LatLng(userPos.lat,userPos.lng);
+
+
+           for(var i=0;i<allRest.length;i++){
                 var pos = {
-                    lat: pCode[i].lat,
-                    lng: pCode[i].lng
+                    lat: allRest[i].lat,
+                    lng: allRest[i].lng
                 };
 
                var markerLatLng= new google.maps.LatLng(pos.lat,pos.lng);
@@ -101,38 +108,20 @@ function map(url, data) {
                var radius=google.maps.geometry.spherical.computeDistanceBetween(userLatLng, markerLatLng);
 
                if (radius<500){
+                   var infoWindow=new google.maps.InfoWindow({
+                       content:allRest[i].rest_name+"<br>"+allRest[i].cusine_type+"<br>"+allRest[i].telephone
+                   });
                 var marker = new google.maps.Marker({
                     map: mapp,
                     position: pos
                 });
-                markers.push(marker);
-                   google.maps.event.addListener(marker, 'click', function() {
-                       infoWindow.setContent(pCode[i].rest_name);
+                   marker.addListener( 'click', function() {
                        infoWindow.open(mapp, this);
                    });
+                 markers.push(marker);
+
            }}
-            for(var i=0;i<nameRest.length;i++){
-                var pos = {
-                    lat: nameRest[i].lat,
-                    lng: nameRest[i].lng
-
-                };
-
-                console.log(nameRest[i].rest_name);
-
-
-                var marker = new google.maps.Marker({
-                    map: mapp,
-                    position: pos
-                });
-                markers.push(marker);
-                    google.maps.event.addListener(marker, 'click', function() {
-                        infoWindow.setContent(nameRest[i].rest_name);
-                        infoWindow.open(mapp, this);
-                    });
-
-
-           }},
+           },
         error: function (xhr, status, error) {
             alert('Error: ' + error.message);
         }
