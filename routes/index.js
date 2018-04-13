@@ -12,10 +12,6 @@ router.get('/index', function(req, res, next) {
   res.render('index', { title: 'My Form' });
 });
 
-router.get('/map',function(req,res,next){
-   res.render('map');
-});
-
 router.get('/geolocation',function(req,res,next){
     res.render('geolocation');
 });
@@ -30,6 +26,8 @@ router.post('/index',rest.getRest);
 router.post('/insert',rest.insert);
 
 router.post('/upload',rest.uploadImage);
+
+router.post('/geolocation',rest.getLocation);
 
 /*Restaurant*/
 router.get('/restaurant',rest.getSpecificRest);

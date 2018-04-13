@@ -5,9 +5,10 @@ var multer  =   require('multer');
 var path = require('path');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var NodeGeocoder=require('node-geocoder');
 
 /*
-This method is responsible to fetch the rquested
+This method is responsible to fetch the requested
 data from the system database then return the data
 in a json format to the html page (front end).
  */
@@ -119,6 +120,36 @@ exports.insert = function (req, res) {
     }
 }
 
+exports.getLocation=function(req,res){
+    var userData = req.body;
+   // console.log(userData);
+    if (userData == null) {
+        res.status(403).send('No data sent!')
+    }
+    try {
+
+        // queries executed on the database in parallel.
+        var queryRestaurantPostcode = { postcode: userData.address };
+        var queryRestaurantName = { rest_name:  userData.address };
+
+        Restaurant.find(queryRestaurantPostcode).exec()
+            .then(function(result1){
+                return Restaurant.find(queryRestaurantName).exec()
+                    .then(function(result2){
+                        return [result1,result2];
+                    })
+            }).then(function(finalResult){
+              //  console.log(finalResult);
+            res.send(JSON.stringify(finalResult));
+        });
+
+    } catch (e) {
+        res.status(500).send('error ' + e);
+    }
+
+
+}
+
 exports.getSpecificRest= function(req,res){
     var restID = req.body;
 
@@ -130,11 +161,10 @@ exports.getSpecificRest= function(req,res){
         var queryRestaurantID = { _id: restID };
         Restaurant.find(queryRestaurantID).exec()
             .then(function(result){
+
                 res.send(JSON.stringify(result));
 
         });
-
-
 
     } catch (e){
         res.status(500).send('error ' + e);

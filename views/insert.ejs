@@ -8,7 +8,6 @@
   <body>
     <h1><%= title %></h1>
 
-
     <form id=“xForm" onsubmit="onSubmit('/insert')">
         <label for='restaurant'>Restaurant:</label>
         <input type="text" name="rest" id="rest" value="Mickey">
@@ -40,17 +39,12 @@
     var sub=document.getElementById("g"),
         hidefile=document.getElementById("fileToUpload"),
         hidesubmit=document.getElementById("submitImage");
-        sub.onclick=function(){
-          this.form.submit;
-          hidefile.style.display="inline";
-          hidesubmit.style.display="inline";
-        }
-
-
-
+            sub.onclick=function(){
+              this.form.submit;
+              hidefile.style.display="inline";
+              hidesubmit.style.display="inline";
+            }
   </script>
-
-
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="/javascripts/index.js"></script>
   </body>

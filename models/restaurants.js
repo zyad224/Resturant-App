@@ -10,7 +10,7 @@ var Restaurant = new Schema(
         feedback: {type: String},
         postcode:{type:String},
         lat:{type:Number},
-        long:{type:Number},
+        lng:{type:Number},
         image:{ type:String }
     }
 );
