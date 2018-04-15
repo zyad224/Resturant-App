@@ -21,6 +21,10 @@ router.get('/insert', function(req, res, next) {
     res.render('insert', { title: 'My Form' });
 });
 
+router.get('/login', function(req, res, next) {
+    res.render('login');
+});
+
 router.post('/index',rest.getRest);
 
 router.post('/insert',rest.insert);
