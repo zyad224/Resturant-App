@@ -3,7 +3,6 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="/socket.io/socket.io.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
         body {
@@ -123,7 +122,7 @@
 <body>
 
 <div class="container">
-    <form action="/action_page.php">
+    <form>
         <div class="row">
             <h2 style="text-align:center">Login with Social Media or Manually</h2>
 
@@ -144,9 +143,10 @@
                 <div class="hide-md-lg">
                 </div>
 
-                <input type="text" name="username" placeholder="Username" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <input type="submit" value="Login">
+                <input type="text" id="user" name="username" placeholder="Username" required>
+                <input type="password" id="psw" name="password" placeholder="Password" required>
+                <input type="submit" value="Login" id="btn">
+
             </div>
 
         </div>
@@ -163,6 +163,24 @@
         </div>
     </div>
 </div>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+    var btn=document.getElementById("btn");
+    var username=document.getElementById("user");
+    var psw=document.getElementById("psw");
+    btn.onclick=sendUserInfo;
+
+
+    function sendUserInfo()
+    {
+        var socket = io.connect('http://localhost:3003');
+        socket.on('connect', function (data) {
+            socket.emit('join',"hello" );
+        });
+    }
+</script>
 
 </body>
 </html>

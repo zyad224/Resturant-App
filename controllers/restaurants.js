@@ -84,7 +84,7 @@ exports.getRest = function (req, res) {
         };
 
         execute();
-        
+
 
     } catch (e) {
         res.status(500).send('error ' + e);

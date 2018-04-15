@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var Restaurant = require('../models/restaurants');
+var User = require('../models/users');
+
 
 
 exports.init= function() {
@@ -16,6 +18,12 @@ exports.init= function() {
         postcode:"S3 7LJ",
         lat:"53.381600899999995",
         lng:"-1.4815976"
+    });
+
+    var user1 = new User({
+        user_name: "zyad",
+        password: "English"
+
     });
 
     var restaurant2 = new Restaurant({
@@ -58,6 +66,9 @@ exports.init= function() {
         console.log(results._id);
     });
     restaurant4.save(function (err, results) {
+        console.log(results._id);
+    });
+    user1.save(function (err, results) {
         console.log(results._id);
     });
 }
