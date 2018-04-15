@@ -30,7 +30,7 @@ exports.init= function() {
     });
     var restaurant3 = new Restaurant({
         rest_name: "cosmo",
-        cusine_type: "English",
+        cusine_type: "French",
         telephone:"01010101020",
         ranking: 1,
         feedback: "doo",
@@ -38,6 +38,16 @@ exports.init= function() {
         lat:"45.831803",
         lng:"3.079670"
     });
+    var restaurant4 = new Restaurant({
+        rest_name: "abc",
+        cusine_type: "cosmo",
+        telephone:"01010101020",
+        ranking: 1,
+        feedback: "doo",
+        postcode:"S3 7LJ",
+        lat:"45.831803",
+        lng:"3.079670"
+    })
     restaurant1.save(function (err, results) {
         console.log(results._id);
     });
@@ -45,6 +55,9 @@ exports.init= function() {
         console.log(results._id);
     });
     restaurant3.save(function (err, results) {
+        console.log(results._id);
+    });
+    restaurant4.save(function (err, results) {
         console.log(results._id);
     });
 }

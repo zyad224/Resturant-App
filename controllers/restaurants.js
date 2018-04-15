@@ -28,30 +28,69 @@ exports.getRest = function (req, res) {
         var queryRestaurantFeedback = { feedback: userData.rest };
         var queryRestaurantPostcode = { postcode: userData.rest };
 
+        var query1 = new Promise(
+            function(resolve,reject){
+                resolve(Restaurant.find(queryCusineType).exec());
+            }
 
-       Restaurant.find(queryCusineType).exec()
-           .then(function(result1){
-               return Restaurant.find(queryRestaurantName).exec()
-                   .then(function(result2){
-                       return Restaurant.find(queryRestaurantRanking).exec()
-                           .then(function(result3){
-                               return Restaurant.find(queryRestaurantFeedback).exec()
-                                   .then(function(result4){
-                                       return Restaurant.find(queryRestaurantPostcode).exec()
-                                           .then(function(result5){
-                                               return [result1,result2,result3,result4,result5];
-                                           });
-                                   })
-                           })
-                   })
-           }).then(function(finalResult){
-            res.send(JSON.stringify(finalResult));
-       });
+        );
+        var query2 = new Promise(
+            function(resolve,reject){
+                resolve(Restaurant.find(queryRestaurantName).exec());
+            }
+
+        );
+        var query3 = new Promise(
+            function(resolve,reject){
+                resolve(Restaurant.find(queryRestaurantRanking).exec());
+            }
+
+        );
+        var query4 = new Promise(
+            function(resolve,reject){
+                resolve(Restaurant.find(queryRestaurantFeedback).exec());
+            }
+
+        );
+        var query5 = new Promise(
+            function(resolve,reject){
+                resolve(Restaurant.find(queryRestaurantPostcode).exec());
+            }
+
+        );
+        var execute= function(){
+           var finalResult;
+            query1
+                .then(function(result1){
+                    return query2
+                        .then(function(result2){
+                            return query3
+                                .then(function(result3){
+                                    return query4
+                                        .then(function(result4){
+                                            return query5
+                                                .then(function(result5){
+                                                    return [result1,result2,result3,result4,result5];
+                                                });
+                                        })
+                                })
+                        })
+                }).then(function(finalResult){
+                   console.log(finalResult);
+                 res.send(JSON.stringify(finalResult));
+            });
+
+
+        };
+
+        execute();
+        
 
     } catch (e) {
         res.status(500).send('error ' + e);
     }
 }
+
 
 exports.uploadImage=function (req, res) {
     req.file('avatar').upload({dirname:'../../public/avatar'},function (err, uploadedFiles) {

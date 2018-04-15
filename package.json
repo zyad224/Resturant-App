@@ -23,6 +23,7 @@
     "npm": "^5.8.0",
     "serve-favicon": "~2.4.5",
     "skipper": "~0.8.5",
+    "socket.io": "^2.1.0",
     "spherical-geometry-js": "^1.0.1"
   }
 }
