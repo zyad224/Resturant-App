@@ -30,8 +30,11 @@ router.post('/upload',rest.uploadImage);
 router.post('/geolocation',rest.getLocation);
 
 /*Restaurant*/
-router.get('/restaurant',rest.getSpecificRest);
-   // res.render('restaurant');
+router.get('/restaurant',function(req,res,next){
+    res.render('restaurant');
+});
 
+/*Retrieve Restaurant Page From DB*/
+router.post('/restaurant',rest.getSpecificRest);
 
 module.exports = router;
