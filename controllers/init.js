@@ -17,7 +17,8 @@ exports.init= function() {
         feedback: "abc",
         postcode:"S3 7LJ",
         lat:"53.381600899999995",
-        lng:"-1.4815976"
+        lng:"-1.4815976",
+        image:"1"
     });
 
     var user1 = new User({
@@ -39,7 +40,8 @@ exports.init= function() {
         feedback: "doo",
         postcode:"S3 8NU",
         lat:"53.387146",
-        lng:"-1.466354"
+        lng:"-1.466354",
+        image:"1"
     });
     var restaurant3 = new Restaurant({
         rest_name: "cosmo",
@@ -49,7 +51,8 @@ exports.init= function() {
         feedback: "doo",
         postcode:"S3 7LJ",
         lat:"45.831803",
-        lng:"3.079670"
+        lng:"3.079670",
+        image:"1"
     });
     var restaurant4 = new Restaurant({
         rest_name: "abc",
@@ -59,7 +62,8 @@ exports.init= function() {
         feedback: "doo",
         postcode:"S3 7LJ",
         lat:"45.831803",
-        lng:"3.079670"
+        lng:"3.079670",
+        image:"1"
     })
     restaurant1.save(function (err, results) {
         console.log(results._id);

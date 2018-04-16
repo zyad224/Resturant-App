@@ -67,7 +67,7 @@ exports.checkCredential=function(req,res){
                    // res.render("insert",{dataArray:result});
                 }
                 else {
-                    res.send(JSON.stringify("no user"));
+                    res.send(JSON.stringify(""));
 
                 }
             })
