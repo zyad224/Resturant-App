@@ -7,32 +7,45 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var NodeGeocoder=require('node-geocoder');
 
+exports.addUser=function(username,psw){
+    var user = new User({
+        user_name: username,
+        password: psw
+    });
 
-exports.checkCredential=function(username,psw){
+    user.save(function (err, results) {
+        console.log(results);
+    });
 
-    // console.log(username);
+};
+exports.checkCredential=function(req,res){
+    var userData = req.body;
+
+     console.log(userData);
     // console.log(psw);
     var query = { user_name: username , password: psw};
     var f;
-    try {
-        User.find(query).exec()
-            .then(function (result) {
-                if(result.length!=0) {
-                    f=true;
-                    Boolean(f);
-                }
-                else{
-                    f=false;
-                    Boolean(f);
-                   // console.log("no user");
-                }
+    // try {
+    //     // User.find(query).exec()
+    //     //     .then(function (result) {
+    //     //         if(result.length!=0) {
+    //     //             //f=true;
+    //     //             re(true);
+    //     //            // Boolean(f);
+    //     //         }
+    //     //         else{
+    //     //             re(false);
+    //     //            // f=false;
+    //     //           //  Boolean(f);
+    //     //            // console.log("no user");
+    //     //         }
+    //
+    //
+    //         })
+    // }catch(e){
+    //     alert("error in the server");
+    // }
 
-
-            })
-    }catch(e){
-        alert("error in the server");
-    }
-
-    console.log(f);
+   // console.log(re);
 
 };

@@ -3,6 +3,8 @@ var router = express.Router();
 var bodyParser= require("body-parser");
 
 var rest = require('../controllers/restaurants');
+var user = require('../controllers/users');
+
 var initDB= require('../controllers/init');
 initDB.init();
 
@@ -22,6 +24,7 @@ router.get('/insert', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
+
     res.render('login');
 });
 
@@ -31,7 +34,10 @@ router.post('/insert',rest.insert);
 
 router.post('/upload',rest.uploadImage);
 
-router.post('/geolocation',rest.getLocation);
+
+router.get('/signup', function(req, res, next) {
+    res.render('signup');
+});
 
 /*Restaurant*/
 router.get('/restaurant',function(req,res,next){
@@ -40,5 +46,6 @@ router.get('/restaurant',function(req,res,next){
 
 /*Retrieve Restaurant Page From DB*/
 router.post('/restaurant',rest.getSpecificRest);
+router.post('/login',user.checkCredential);
 
 module.exports = router;

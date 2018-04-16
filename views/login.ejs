@@ -123,22 +123,9 @@
 <body>
 
 <div class="container">
-    <form id="form">
+    <form id="form" onsubmit="onSubmitCredential('/login')">
         <div class="row">
             <h2 style="text-align:center">Login with Social Media or Manually</h2>
-
-
-            <!--<div class="col">-->
-                <!--<a href="#" class="fb btn">-->
-                    <!--<i class="fa fa-facebook fa-fw"></i> Login with Facebook-->
-                <!--</a>-->
-                <!--<a href="#" class="twitter btn">-->
-                    <!--<i class="fa fa-twitter fa-fw"></i> Login with Twitter-->
-                <!--</a>-->
-                <!--<a href="#" class="google btn"><i class="fa fa-google fa-fw">-->
-                    <!--</i> Login with Google+-->
-                <!--</a>-->
-            <!--</div>-->
 
             <div class="col" >
                 <div class="hide-md-lg">
@@ -153,24 +140,29 @@
         </div>
     </form>
 </div>
+<form>
+    <div class="bottom-container" style="width:50%;margin:0 auto" >
+        <div class="row" >
+            <div class="col">
+                <input type="button" id ="signup" value="Sign up">
 
-<div class="bottom-container" style="width:50%;margin:0 auto" >
-    <div class="row" >
-        <div class="col">
-            <a href="#" style="color:white" class="btn">Sign up</a>
-        </div>
-        <div class="col">
-            <a href="#" style="color:white" class="btn">Forgot password?</a>
+            </div>
+            <div class="col">
+                <a href="#" style="color:white" class="btn">Forgot password?</a>
+            </div>
         </div>
     </div>
-</div>
 
-<script src="/socket.io/socket.io.js"></script>
+</form>
+
+
 
 <script>
-   
+   document.getElementById("signup").onclick=function(){
 
-     btn.onclick=sendUserInfo;
+       window.location.href="signup";
+
+   }
 </script>
 
 </body>
