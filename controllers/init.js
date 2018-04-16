@@ -25,6 +25,11 @@ exports.init= function() {
         password: "English"
 
     });
+    var user2 = new User({
+        user_name: "jerry",
+        password: "English"
+
+    });
 
     var restaurant2 = new Restaurant({
         rest_name: "Domino",
@@ -69,6 +74,9 @@ exports.init= function() {
         console.log(results._id);
     });
     user1.save(function (err, results) {
+        console.log(results._id);
+    });
+    user2.save(function (err, results) {
         console.log(results._id);
     });
 }

@@ -8,6 +8,8 @@ var app = require('../app');
 var debug = require('debug')('week-5-mongo:server');
 var http = require('http');
 var database= require('../databases/restaurants')
+var user = require('../controllers/users');
+
 /**
  * Get port from environment and store in Express.
  */
@@ -28,7 +30,12 @@ io.on('connection', function(client) {
     console.log('Client connected...');
 
     client.on('join', function(data) {
-        console.log(data);
+       // console.log(data);
+        user.checkCredential(data[0],data[1]);
+           // console.log("user found");
+
+       // console.log(user.checkCredential(data[0],data[1]));
+
         client.emit('messages', 'Hello from server');
     });
 
