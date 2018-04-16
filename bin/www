@@ -33,21 +33,19 @@ var io = require('socket.io').listen(server);
         client.on('join', function (data) {
             // console.log(data);
 
-            user.addUser(data[0],data[1]);
-            // var re;
-            // user.checkCredential(data[0], data[1], function (result) {
-            //     if (result){
-            //        // window.location.href = '/insert';}
-            //
-            //     console.log(result);
-            //
-            // })
-            // // console.log("user found");
-            //
-            // // console.log(user.checkCredential(data[0],data[1]));
-            //
-            // client.emit('messages', 'Hello from server');
+            user.addUser(data[0],data[1],function(v){
+              console.log(v);
+              if(v)
+                  client.emit('messages',"user added to the system");
+              else
+                  client.emit('messages',"user already exists");
+
+
+            });
+
+
         });
+
 
     });
 

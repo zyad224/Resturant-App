@@ -7,45 +7,74 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var NodeGeocoder=require('node-geocoder');
 
-exports.addUser=function(username,psw){
-    var user = new User({
-        user_name: username,
-        password: psw
-    });
+exports.addUser=function(username,psw,v){
 
-    user.save(function (err, results) {
-        console.log(results);
-    });
+
+    var query = { user_name: username, password: psw};
+
+    User.find(query).exec()
+        .then(function (result) {
+            var alert;
+            console.log(result);
+
+            if (result.length > 0) {
+                v(false);
+
+              //  alert("user exist");
+              //  console.log(result);
+                //alert("user already exists");
+            }
+            else {
+                var user = new User({
+                    user_name: username,
+                    password: psw
+                });
+
+                user.save(function (err, results) {
+                    //console.log(results);
+                });
+                v(true);
+
+               // alert("user added to the system");
+
+            }
+        })
+
+
 
 };
 exports.checkCredential=function(req,res){
     var userData = req.body;
+// console.log(userData);
 
-     console.log(userData);
+    if (userData == null) {
+        res.status(403).send('No data sent!')
+    }
+
+    res.setHeader('Content-Type', 'application/json');
+     //console.log(userData);
     // console.log(psw);
-    var query = { user_name: username , password: psw};
-    var f;
-    // try {
-    //     // User.find(query).exec()
-    //     //     .then(function (result) {
-    //     //         if(result.length!=0) {
-    //     //             //f=true;
-    //     //             re(true);
-    //     //            // Boolean(f);
-    //     //         }
-    //     //         else{
-    //     //             re(false);
-    //     //            // f=false;
-    //     //           //  Boolean(f);
-    //     //            // console.log("no user");
-    //     //         }
-    //
-    //
-    //         })
-    // }catch(e){
-    //     alert("error in the server");
-    // }
+    var query = { user_name: userData.usr, password: userData.psw};
 
-   // console.log(re);
+
+        User.find(query).exec()
+            .then(function (result) {
+                //console.log(result);
+
+                if (result.length != 0) {
+                   // console.log(result);
+                    res.send(JSON.stringify(result));
+                   // res.render("insert",{dataArray:result});
+                }
+                else {
+                    res.send(JSON.stringify("no user"));
+
+                }
+            })
+
+
+
+
+
 
 };

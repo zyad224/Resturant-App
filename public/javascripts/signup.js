@@ -7,7 +7,7 @@ function sendUserInfo() {
         socket.emit('join', credential);
         //socket.emit('message', "Input");
         //$('#Input').val('');
-        alert("user signed up");
+       // alert("user signed up");
         return false;
     });
 

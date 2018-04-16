@@ -8,8 +8,12 @@ function sendCredentials(url, data) {
         type: 'POST',
         success: function (dataR) {
             var content = "";
-
-
+            console.log(dataR);
+            for (var i = 0; i < dataR.length; i++) {
+                var obj  = dataR[i];
+                alert(obj.user_name);
+                }
+                window.location.href = '/insert';
             //document.getElementById('results').innerHTML = JSON.stringify(ret);
         },
         error: function (xhr, status, error) {
