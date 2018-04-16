@@ -190,7 +190,7 @@ exports.getLocation=function(req,res){
 }
 
 exports.getSpecificRest= function(req,res){
-    var restID = req.body;
+    var restID = req.body.objectID;
 
     if (restID == null) {
         res.status(403).send('No data sent!')
@@ -200,7 +200,7 @@ exports.getSpecificRest= function(req,res){
         var queryRestaurantID = { _id: restID };
         Restaurant.find(queryRestaurantID).exec()
             .then(function(result){
-
+                console.log(result);
                 res.send(JSON.stringify(result));
 
         });
