@@ -48,9 +48,10 @@ function sendAjaxQuery(url, data) {
                     var post = restaurant[j].postcode;
                     var image = restaurant[j].image;
 
-                    content = '<ul class="w3-ul w3-card-4">' +
+                    content = '<ul class="form-wrapper">' +
                         '<li class="w3-bar">' +
-                        '<div id="rests" class="w3-bar-item">'
+                        '<form  action="/sendInfo" method="post"><input id="id" name="ObjectId" type="hidden" value="'+id+'"><button type="submit">Go</button>'+
+                        '<div id="rests" >'
                         +"Restaurant ID: "+id+" "
                         +"Restaurant Name: "+name+" "
                         +"Cusine Type: "+" " +type+" "
@@ -58,16 +59,16 @@ function sendAjaxQuery(url, data) {
                         +"Feedback" + " " + feed+ " "
                         +"postcode" + " " + post+ " "
                         +"Image" + " " +image+ "" +
-                        '</div></li></ul>';
+                        '</div></form></li></ul>';
                     //check the id if it does not exist, append
                     if($("#" + id).length == 0) {
                         $('#ProductList').append(content);
                         //change div id as a _id
                         $('#rests').attr('id',id);
                     }
-               }
+                }
             }
-           //document.getElementById('results').innerHTML = JSON.stringify(ret);
+            //document.getElementById('results').innerHTML = JSON.stringify(ret);
         },
         error: function (xhr, status, error) {
             alert('Error: ' + error.message);

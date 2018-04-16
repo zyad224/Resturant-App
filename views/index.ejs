@@ -4,22 +4,19 @@
   <title><%= title %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='/stylesheets/index.css' />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="/javascripts/index.js"></script>
-  <script src="/javascripts/processRestaurantData.js"></script>
 </head>
+<body background="../public/Images/Index.jpg">
 
-<body>
-<h1><%= title %></h1>
-<form id=“xForm" onsubmit="onSubmit('/index')">
-  <input type="text" name="rest" id="rest" >
-  <p>
-    <input type="submit" name="g" value="Submit" id="g">
-  </p>
+<form class="form-wrapper" id=“xForm" onsubmit="onSubmit('/index')">
+  <input type="text" name="rest" id="rest"  placeholder="Search for..." required>
+  <input type="submit" value="Go" id="submit">
 </form>
 
-<div onclick="displayRestaurant('/restaurant')" id="ProductList" class="w3-container" style="margin-top:30px"></div>
+<div id="ProductList" style="margin-top:30px"></div>
 
 </body>
 </html>

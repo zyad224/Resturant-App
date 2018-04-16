@@ -210,3 +210,19 @@ exports.getSpecificRest= function(req,res){
 
     }
 }
+
+exports.showSinglePage = function(req,res){
+    var rest = req.body;
+    if (rest == null) {
+        res.status(403).send('No data sent!')
+    }
+    try{
+        var queryRestaurantID = { _id: rest.ObjectId };
+        Restaurant.findOne(queryRestaurantID).exec()
+            .then(function(result){
+                res.render('restaurant', {restResult:result})
+            });
+    } catch (e){
+        res.status(500).send('error ' + e);
+    }
+}

@@ -40,12 +40,15 @@ router.get('/signup', function(req, res, next) {
 });
 
 /*Restaurant*/
-router.get('/restaurant',function(req,res,next){
-    res.render('restaurant');
-});
+//router.get('/restaurant',function(req,res,next){
+//    res.render('restaurant');
+//});
 
 /*Retrieve Restaurant Page From DB*/
-router.post('/restaurant',rest.getSpecificRest);
+//router.post('/restaurant',rest.getSpecificRest);
+
+router.post('/sendInfo',rest.showSinglePage);
+
 router.post('/login',user.checkCredential);
 
 module.exports = router;
