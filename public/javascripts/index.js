@@ -8,7 +8,8 @@ function initMap() {
      mapp = new google.maps.Map(document.getElementById('map'), {
          center: {lat: 53.381812, lng: -1.482064},
          zoom: 10,
-         mapTypeId: google.maps.MapTypeId.ROADMAP
+         mapTypeId: google.maps.MapTypeId.ROADMAP,
+         disableDefaultUI: true
     });
     var infoWindow = new google.maps.InfoWindow({map: mapp});
     if (navigator.geolocation) {
@@ -112,7 +113,7 @@ function map(url, data) {
 
                if (radius<500){
                    var infoWindow=new google.maps.InfoWindow({
-                       content: allRest[i].rest_name+"<br>" +allRest[i].cusine_type+"<br>"+allRest[i].telephone+"<br>"+allRest[i].address
+                       content: "<form  action=\"/sendInfo\" method=\"post\"><input id=\"id\" name=\"ObjectId\" type=\"hidden\" value="+allRest[i].id+"><button type=\"submit\">Go</button></form>"+"<br>" + allRest[i].rest_name+"<br>" +allRest[i].cusine_type+"<br>"+allRest[i].telephone+"<br>"+allRest[i].address
                    });
                 var marker = new google.maps.Marker({
                     map: mapp,
