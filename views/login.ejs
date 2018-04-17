@@ -1,169 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <title>Login</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/javascripts/login.js"></script>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        /* style the container */
-        .container {
-            position: relative;
-            border-radius: 5px;
-            background-color: #f2f2f2;
-            padding: 20px 0 30px 0;
-        }
-
-        /* style inputs and link buttons */
-        input,
-        .btn {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 4px;
-            margin: 5px 0;
-            opacity: 0.85;
-            display: inline-block;
-            font-size: 17px;
-            line-height: 20px;
-            text-decoration: none; /* remove underline from anchors */
-        }
-
-        input:hover,
-        .btn:hover {
-            opacity: 1;
-        }
-
-        /* style the submit button */
-        input[type=submit] {
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-        }
-
-        input[type=submit]:hover {
-            background-color: #45a049;
-        }
-
-        /* Two-column layout */
-        .col {
-            width: 50%;
-            margin: 0 auto;
-            padding: 0 50px;
-            margin-top: 6px;
-        }
-
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        /* vertical line */
-        .vl {
-            position: absolute;
-            left: 50%;
-            transform: translate(-50%);
-            border: 2px solid #ddd;
-            height: 175px;
-        }
-
-        /* text inside the vertical line */
-        .vl-innertext {
-            position: absolute;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #f1f1f1;
-            border: 1px solid #ccc;
-            border-radius: 50%;
-            padding: 8px 10px;
-        }
-
-        /* hide some text on medium and large screens */
-        .hide-md-lg {
-            display: none;
-        }
-
-        /* bottom container */
-        .bottom-container {
-            text-align: center;
-            background-color: #666;
-            border-radius: 0px 0px 4px 4px;
-        }
-
-        /* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
-        @media screen and (max-width: 650px) {
-            .col {
-                width: 100%;
-                margin-top: 0;
-                text-align: center;
-
-            }
-            /* hide the vertical line */
-            .vl {
-                display: none;
-            }
-            /* show the hidden text on small screens */
-            .hide-md-lg {
-                display: block;
-                text-align: center;
-            }
-        }
-    </style>
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
 
-<div class="container">
-    <form id="form" onsubmit="onSubmitCredential('/login')">
-        <div class="row">
-            <h2 style="text-align:center">Login with Social Media or Manually</h2>
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <form class="login100-form validate-form"  id="form" onsubmit="onSubmitCredential('/login')">
+					<span class="login100-form-title p-b-68">
+						Login
+					</span>
 
-            <div class="col" >
-                <div class="hide-md-lg">
+
+                <div class="wrap-input100">
+                    <input class="input100" type="text" name="usr" id="usr">
+                    <span class="focus-input100" data-placeholder="Username"></span>
                 </div>
 
-                <input type="text" id="usr" name="usr" placeholder="Username" required>
-                <input type="password" id="psw" name="psw" placeholder="Password" required>
-                <input type="submit" value="Login" id="btn">
+                <div class="wrap-input100 validate-input" data-validate="Password">
+						<span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
+						</span>
+                    <input class="input100" type="password" name="psw" id="psw">
+                    <span class="focus-input100" data-placeholder="Enter password"></span>
+                </div>
 
-            </div>
+                <div class="container-login100-form-btn">
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <button class="login100-form-btn">
+                            Login
+                        </button>
+                    </div>
+                </div>
 
-        </div>
-    </form>
-</div>
-<form>
-    <div class="bottom-container" style="width:50%;margin:0 auto" >
-        <div class="row" >
-            <div class="col">
-                <input type="button" id ="signup" value="Sign up">
+                <div class="text-center p-t-115">
+						<span class="txt1">
+							Don’t have an account?
+						</span>
 
-            </div>
-            <div class="col">
-                <a href="#" style="color:white" class="btn">Forgot password?</a>
-            </div>
+                    <a class="txt2" href="signup">
+                        Sign Up
+                    </a>
+                </div>
+            </form>
         </div>
     </div>
-
-</form>
-
+</div>
 
 
-<script>
-   document.getElementById("signup").onclick=function(){
+<div id="dropDownSelect1"></div>
 
-       window.location.href="signup";
 
-   }
-</script>
+
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="vendor/animsition/js/animsition.min.js"></script>
+<script src="vendor/bootstrap/js/popper.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/select2/select2.min.js"></script>
+<script src="vendor/daterangepicker/moment.min.js"></script>
+<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<script src="vendor/countdowntime/countdowntime.js"></script>
+<script src="js/main.js"></script>
+<script src="/javascripts/login.js"></script>
 
 </body>
 </html>
