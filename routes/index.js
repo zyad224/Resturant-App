@@ -20,7 +20,7 @@ router.get('/geolocation',function(req,res,next){
 
 /* GET insert page. */
 router.get('/insert', function(req, res, next) {
-    res.render('insert', { title: 'My Form' });
+    res.render('insert', { title: 'Restaurant Sign Up Form'  });
 });
 
 router.get('/login', function(req, res, next) {
@@ -52,5 +52,10 @@ router.get('/signup', function(req, res, next) {
 router.post('/sendInfo',rest.showSinglePage);
 
 router.post('/login',user.checkCredential);
+
+router.get('/about',function(req,res,next){
+    res.render('about');
+});
+
 
 module.exports = router;

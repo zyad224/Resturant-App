@@ -1,90 +1,99 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title><%= title %></title>
-    <meta charset=utf-8 />
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcm6sCcEcvIHv7ILLDVSDbbkN2SOBgGmw&libraries=geometry,places"></script>
-  </head>
-  <body>
-    <h1><%= title %></h1>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Signup / Registration form using Material Design - Demo by W3lessons</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+    <link rel='stylesheet' href='/stylesheets/insert.css' />
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcm6sCcEcvIHv7ILLDVSDbbkN2SOBgGmw&libraries=geometry,places"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/javascripts/index.js"></script>
+    <!--materialize js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+</head>
+<body>
+<center> <h3><%= title %></h3></center>
 
-    <form id=“xForm" onsubmit="onSubmit('/insert')">
-        <label for='restaurant'>Restaurant:</label>
-        <input type="text" name="rest" id="rest" value="Mickey">
-        <p><label for='cusinetype'>Cusine Type:</label>
-                <input type="text" name="cusine" id="cusine" value="Mouse">
-        </p>
+<form id=“xForm" onsubmit="onSubmit('/insert')">
+    <label for='restaurant'>Restaurant:</label>
+    <input type="text" name="rest" id="rest">
 
-        <p><label for='ranking'>Ranking:</label>
-                <input type="text" name="rank" id="rank" value="1900">
-        </p>
+    <p>
+        <label for='cusinetype'>Cusine Type:</label>
+        <input type="text" name="cusine" id="cusine">
+    </p>
 
-        <p><label for='feedback'>Feedback:</label>
-            <input type="text" name="feed" id="feed" value="1900">
-        </p>
+    <p>
+        <label for='ranking'>Ranking:</label>
+        <input type="text" name="rank" id="rank">
+    </p>
 
-       <p>
-           <label for='postcode'>Postcode:</label>
-           <input type="text" name="postc" id="postc" value="S3 7LJ">
-           <input type="button" value="Calculate" id="latlngBtn">
-       </p>
+    <p>
+        <label for='feedback'>Feedback:</label>
+        <input type="text" name="feed" id="feed">
+    </p>
+
+    <p>
+        <label for='postcode'>Postcode:</label>
+        <input type="text" name="postc" id="postc" value="S3 7LJ">
+    </p>
+    <input class="button" type="button" value="Calculate" id="latlngBtn"><br><br><br>
+
+    <label for='latitude'>Latitude:</label>
+    <input type="text" name="lat" id="lat" readonly>
+
+    <label for='longitude'>Longitude:</label>
+    <input type="text" name="lng" id="lng" readonly>
 
 
-        <label for='latitude'>Latitude:</label>
-            <input type="text" name="lat" id="lat" readonly>
+    <p>
+        <label for='address'>Address:</label>
+        <input type="text" name="address" id="address" value="1900">
+    </p>
 
-        <label for='longitude'>Longitude:</label>
-        <input type="text" name="lng" id="lng" readonly>
+    <p><input class="button" type="submit" name="g" value="Submit" id="g"></p>
+</form>
+<br><br>
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="avatar" id="fileToUpload" style="display:none">
+    <input class="button" type="submit" value="Upload File" name="submit" id="submitImage" style="display:none">
+</form>
+
+<div id="results" style="margin-top:30px"></div>
+
+<script>
+
+    var sub=document.getElementById("g"),
+        hidefile=document.getElementById("fileToUpload"),
+        hidesubmit=document.getElementById("submitImage");
+    sub.onclick=function(){
+        this.form.submit;
+        hidefile.style.display="inline";
+        hidesubmit.style.display="inline";
+    }
+    var geocoder = new google.maps.Geocoder();
+    var latlngbtn=document.getElementById("latlngBtn");
+    latlngbtn.onclick=function(){
+        geocodeAddress(geocoder);
+    }
+    function geocodeAddress(geocoder) {
+        var address = document.getElementById('postc').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+            if (status === 'OK') {
+                document.getElementById('lat').value=results[0].geometry.location.lat();
+                document.getElementById('lng').value=results[0].geometry.location.lng();
+
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
+</script>
 
 
-        <p><label for='address'>Address:</label>
-            <input type="text" name="address" id="address" value="1900">
-        </p>
-
-        <p><input type="submit" name="g" value="Submit" id="g"></p>
-    </form>
-
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        Select file to upload:
-        <input type="file" name="avatar" id="fileToUpload">
-        <input type="submit" value="Upload File" name="submit" id="submitImage">
-    </form>
-  <div id="results" style="margin-top:30px"></div>
-
-  <script>
-
-          var sub=document.getElementById("g"),
-              hidefile=document.getElementById("fileToUpload"),
-              hidesubmit=document.getElementById("submitImage");
-          sub.onclick=function(){
-              this.form.submit;
-              geocodeAddress(geocoder, map);
-              hidefile.style.display="inline";
-              hidesubmit.style.display="inline";
-          }
-          var geocoder = new google.maps.Geocoder();
-          var latlngbtn=document.getElementById("latlngBtn");
-          latlngbtn.onclick=function(){
-              geocodeAddress(geocoder);
-          }
-          function geocodeAddress(geocoder) {
-              var address = document.getElementById('postc').value;
-              geocoder.geocode({'address': address}, function(results, status) {
-                  if (status === 'OK') {
-                      document.getElementById('lat').value=results[0].geometry.location.lat();
-                      document.getElementById('lng').value=results[0].geometry.location.lng();
-
-                  } else {
-                      alert('Geocode was not successful for the following reason: ' + status);
-                  }
-              });
-          }
-
-  </script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="/javascripts/index.js"></script>
-
-  </body>
+</body>
 </html>
 
