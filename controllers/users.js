@@ -61,13 +61,13 @@ exports.checkCredential=function(req,res){
             .then(function (result) {
                 //console.log(result);
 
-                if (result.length != 0) {
+                if (result.length > 0) {
                    // console.log(result);
                     res.send(JSON.stringify(result));
                    // res.render("insert",{dataArray:result});
                 }
                 else {
-                    res.send(JSON.stringify("no user"));
+                    res.send(JSON.stringify(""));
 
                 }
             })
