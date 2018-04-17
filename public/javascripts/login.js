@@ -9,17 +9,11 @@ function sendCredentials(url, data) {
         success: function (dataR) {
             var content = "";
             console.log(dataR);
-            if(dataR.length>0)
-            {
-
-              //  var t = JSON.parse(dataR);
-                alert(dataR[0].user_name);
-
+            for (var i = 0; i < dataR.length; i++) {
+                var obj  = dataR[i];
+                alert(obj.user_name);
+                }
                 window.location.href = '/insert';
-            }
-            else{
-                alert("please register !!!!!")
-            }
             //document.getElementById('results').innerHTML = JSON.stringify(ret);
         },
         error: function (xhr, status, error) {
