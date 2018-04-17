@@ -37,6 +37,7 @@ var io = require('socket.io').listen(server);
               console.log(v);
               if(v)
                   client.emit('messages',"user added to the system");
+
               else
                   client.emit('messages',"user already exists");
 

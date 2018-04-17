@@ -13,5 +13,6 @@ function sendUserInfo() {
 
     socket.on('messages', function (data) {
         alert(data);
+        window.location.href = '/index';
     });
 }

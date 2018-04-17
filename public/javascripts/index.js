@@ -111,9 +111,9 @@ function map(url, data) {
 
                var radius=google.maps.geometry.spherical.computeDistanceBetween(userLatLng, markerLatLng);
 
-               if (radius<500){
+               if (radius<1000){
                    var infoWindow=new google.maps.InfoWindow({
-                       content: "<form  action=\"/sendInfo\" method=\"post\"><input id=\"id\" name=\"ObjectId\" type=\"hidden\" value="+allRest[i].id+"><button type=\"submit\">Go</button></form>"+"<br>" + allRest[i].rest_name+"<br>" +allRest[i].cusine_type+"<br>"+allRest[i].telephone+"<br>"+allRest[i].address
+                       content: "<form  action=\"/sendInfo\" method=\"post\"><input id=\"id\" name=\"ObjectId\" type=\"hidden\" value="+allRest[i].id+"><button type=\"submit\">Go</button></form>"+"<br>" + allRest[i].rest_name+"<br>" +allRest[i].cusine_type+"<br>"+allRest[i].address
                    });
                 var marker = new google.maps.Marker({
                     map: mapp,
