@@ -10,6 +10,7 @@ var Restaurant = new Schema(
         ranking: {type: String},
         feedback: {type: String},
         postcode:{type:String},
+        address:{type:String},
         lat:{type:Number},
         lng:{type:Number},
         image:{ type:String }

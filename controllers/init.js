@@ -16,22 +16,11 @@ exports.init= function() {
         ranking: 1,
         feedback: "abc",
         postcode:"S3 7LJ",
+        address:"163 West St, Sheffield",
         lat:"53.381600899999995",
         lng:"-1.4815976",
         image:"1"
     });
-
-    var user1 = new User({
-        user_name: "zyad",
-        password: "English"
-
-    });
-    var user2 = new User({
-        user_name: "jerry",
-        password: "English"
-
-    });
-
     var restaurant2 = new Restaurant({
         rest_name: "Domino",
         cusine_type: "English",
@@ -39,6 +28,7 @@ exports.init= function() {
         ranking: 2,
         feedback: "doo",
         postcode:"S3 8NU",
+        address:"371-373 Ecclesall Rd, Sheffield",
         lat:"53.387146",
         lng:"-1.466354",
         image:"1"
@@ -50,6 +40,7 @@ exports.init= function() {
         ranking: 1,
         feedback: "doo",
         postcode:"S3 7LJ",
+        address:"2, City Lofts Tower, St Paul's Pl, Sheffield",
         lat:"45.831803",
         lng:"3.079670",
         image:"1"
@@ -64,7 +55,18 @@ exports.init= function() {
         lat:"45.831803",
         lng:"3.079670",
         image:"1"
-    })
+    });
+    var user1 = new User({
+        user_name: "zyad",
+        password: "English"
+
+    });
+    var user2 = new User({
+        user_name: "jerry",
+        password: "English"
+
+    });
+
     restaurant1.save(function (err, results) {
         console.log(results._id);
     });

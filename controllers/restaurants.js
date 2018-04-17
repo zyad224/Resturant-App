@@ -143,6 +143,9 @@ exports.insert = function (req, res) {
             ranking: userData.rank,
             feedback: userData.feed,
             postcode: userData.postc,
+            address:userData.address,
+            lat:userData.lat,
+            lng:userData.lng,
             image: userData.file
         });
 
@@ -170,12 +173,17 @@ exports.getLocation=function(req,res){
         // queries executed on the database in parallel.
         var queryRestaurantPostcode = { postcode: userData.address };
         var queryRestaurantName = { rest_name:  userData.address };
+        var queryCusineType = { cusine_type: userData.address };
+
 
         Restaurant.find(queryRestaurantPostcode).exec()
             .then(function(result1){
                 return Restaurant.find(queryRestaurantName).exec()
                     .then(function(result2){
-                        return [result1,result2];
+                        return Restaurant.find(queryCusineType).exec()
+                            .then(function(result3){
+                                return [result1,result2,result3];
+                            })
                     })
             }).then(function(finalResult){
               //  console.log(finalResult);

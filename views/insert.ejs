@@ -4,6 +4,7 @@
     <title><%= title %></title>
     <meta charset=utf-8 />
     <link rel='stylesheet' href='/stylesheets/style.css' />
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcm6sCcEcvIHv7ILLDVSDbbkN2SOBgGmw&libraries=geometry,places"></script>
   </head>
   <body>
     <h1><%= title %></h1>
@@ -14,15 +15,33 @@
         <p><label for='cusinetype'>Cusine Type:</label>
                 <input type="text" name="cusine" id="cusine" value="Mouse">
         </p>
+
         <p><label for='ranking'>Ranking:</label>
                 <input type="text" name="rank" id="rank" value="1900">
         </p>
+
         <p><label for='feedback'>Feedback:</label>
             <input type="text" name="feed" id="feed" value="1900">
         </p>
-        <p><label for='postcode'>Post Code:</label>
-            <input type="text" name="postc" id="postc" value="1900">
+
+       <p>
+           <label for='postcode'>Postcode:</label>
+           <input type="text" name="postc" id="postc" value="S3 7LJ">
+           <input type="button" value="Calculate" id="latlngBtn">
+       </p>
+
+
+        <label for='latitude'>Latitude:</label>
+            <input type="text" name="lat" id="lat" readonly>
+
+        <label for='longitude'>Longitude:</label>
+        <input type="text" name="lng" id="lng" readonly>
+
+
+        <p><label for='address'>Address:</label>
+            <input type="text" name="address" id="address" value="1900">
         </p>
+
         <p><input type="submit" name="g" value="Submit" id="g"></p>
     </form>
 
@@ -34,17 +53,38 @@
   <div id="results" style="margin-top:30px"></div>
 
   <script>
-    var sub=document.getElementById("g"),
-        hidefile=document.getElementById("fileToUpload"),
-        hidesubmit=document.getElementById("submitImage");
-            sub.onclick=function(){
+
+          var sub=document.getElementById("g"),
+              hidefile=document.getElementById("fileToUpload"),
+              hidesubmit=document.getElementById("submitImage");
+          sub.onclick=function(){
               this.form.submit;
+              geocodeAddress(geocoder, map);
               hidefile.style.display="inline";
               hidesubmit.style.display="inline";
-            }
+          }
+          var geocoder = new google.maps.Geocoder();
+          var latlngbtn=document.getElementById("latlngBtn");
+          latlngbtn.onclick=function(){
+              geocodeAddress(geocoder);
+          }
+          function geocodeAddress(geocoder) {
+              var address = document.getElementById('postc').value;
+              geocoder.geocode({'address': address}, function(results, status) {
+                  if (status === 'OK') {
+                      document.getElementById('lat').value=results[0].geometry.location.lat();
+                      document.getElementById('lng').value=results[0].geometry.location.lng();
+
+                  } else {
+                      alert('Geocode was not successful for the following reason: ' + status);
+                  }
+              });
+          }
+
   </script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="/javascripts/index.js"></script>
+
   </body>
 </html>
 

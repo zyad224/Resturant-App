@@ -3,6 +3,7 @@ var markers=[];
 var userPos;
 var pCode;
 var nameRest;
+
 function initMap() {
      mapp = new google.maps.Map(document.getElementById('map'), {
          center: {lat: 53.381812, lng: -1.482064},
@@ -90,7 +91,8 @@ function map(url, data) {
 
              pCode= dataR[0];
              nameRest=dataR[1];
-             var allRest= pCode.concat(nameRest);
+             cusineType=dataR[2];
+             var allRest= pCode.concat(nameRest,cusineType);
              console.log(allRest);
 
             clearMarkers();
@@ -110,7 +112,7 @@ function map(url, data) {
 
                if (radius<500){
                    var infoWindow=new google.maps.InfoWindow({
-                       content:allRest[i].rest_name+"<br>"+allRest[i].cusine_type+"<br>"+allRest[i].telephone
+                       content: allRest[i].rest_name+"<br>" +allRest[i].cusine_type+"<br>"+allRest[i].telephone+"<br>"+allRest[i].address
                    });
                 var marker = new google.maps.Marker({
                     map: mapp,
