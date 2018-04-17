@@ -26,42 +26,14 @@ exports.init= function() {
         cusine_type: "English",
         telephone:"01010101020",
         ranking: 2,
-        feedback: "doo",
+        feedback: "Visited with partner before theatre. When the food arrived my Loster wasn't even warm, half the Lobster meat seemed to be missing and it tasted disgusting like it had been cooked on cleaning products. I complained the Lobster was cold and they took it away with my chips to heat the Lobster and brought it back with cold chips. ",
         postcode:"S3 8NU",
         address:"371-373 Ecclesall Rd, Sheffield",
         lat:"53.387146",
         lng:"-1.466354",
         image:"1"
     });
-    var restaurant3 = new Restaurant({
-        rest_name: "cosmo",
-        cusine_type: "French",
-        telephone:"01010101020",
-        ranking: 1,
-        feedback: "doo",
-        postcode:"S3 7LJ",
-        address:"2, City Lofts Tower, St Paul's Pl, Sheffield",
-        lat:"45.831803",
-        lng:"3.079670",
-        image:"1"
-    });
-    var restaurant4 = new Restaurant({
-        rest_name: "abc",
-        cusine_type: "cosmo",
-        telephone:"01010101020",
-        ranking: 1,
-        feedback: "doo",
-        postcode:"S3 7LJ",
-        lat:"45.831803",
-        lng:"3.079670",
-        image:"1"
-    });
     var user1 = new User({
-        user_name: "zyad",
-        password: "English"
-
-    });
-    var user2 = new User({
         user_name: "jerry",
         password: "English"
 
@@ -73,16 +45,7 @@ exports.init= function() {
     restaurant2.save(function (err, results) {
         console.log(results._id);
     });
-    restaurant3.save(function (err, results) {
-        console.log(results._id);
-    });
-    restaurant4.save(function (err, results) {
-        console.log(results._id);
-    });
     user1.save(function (err, results) {
-        console.log(results._id);
-    });
-    user2.save(function (err, results) {
         console.log(results._id);
     });
 }
