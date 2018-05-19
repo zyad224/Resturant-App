@@ -482,12 +482,19 @@ iframe {
   opacity: 1;
 }
 
+video {
+  width: 640px;
+  height: 480px;
+}
+
 @media (max-width: 992px) {
   .alert-validate::before {
     visibility: visible;
     opacity: 1;
   }
 }
+
+
 
 
 

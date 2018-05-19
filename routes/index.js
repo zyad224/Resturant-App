@@ -27,6 +27,10 @@ router.get('/login', function(req, res, next) {
 
     res.render('login');
 });
+router.get('/webrtc', function(req, res) {
+
+    res.render('webrtc');
+});
 
 router.post('/index',rest.getRest);
 
@@ -56,6 +60,8 @@ router.post('/login',user.checkCredential);
 router.get('/about',function(req,res,next){
     res.render('about');
 });
+
+
 
 
 module.exports = router;
