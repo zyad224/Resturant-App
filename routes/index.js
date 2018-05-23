@@ -14,6 +14,10 @@ router.get('/index', function(req, res, next) {
   res.render('index', { title: 'My Form' });
 });
 
+router.get('/errorPage', function(req, res) {
+    res.render('errorPage');
+});
+
 router.get('/geolocation',function(req,res,next){
     res.render('geolocation');
 });

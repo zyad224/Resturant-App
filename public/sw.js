@@ -18,7 +18,8 @@ var cached_urls = [
 
     '/index',
     '/signup',
-    '/login'
+    '/login',
+    '/errorPage'
 
 ];
 
@@ -56,7 +57,7 @@ self.addEventListener('fetch', function(event) {
             console.log('Network request for ', event.request.url);
             return fetch(event.request).then(function(response) {
                 if (response.status === 404) {
-                    return caches.match('errorPage.html');
+                    return caches.match('errorPage');
                 }
                 return caches.open(cached_urls).then(function(cache) {
                     cache.put(event.request.url, response.clone());
@@ -65,7 +66,7 @@ self.addEventListener('fetch', function(event) {
             });
         }).catch(function(error) {
             console.log('Error, ', error);
-            return caches.match('errorPage.html');
+            return caches.match('errorPage');
         })
     );
 });
