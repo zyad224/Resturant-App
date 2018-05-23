@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel='stylesheet' href='/stylesheets/index.css' />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="/javascripts/index.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
-<body background="../public/Images/Index.jpg">
+<style>
+  .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .button4 {border-radius: 9px; alignment: right}
+
+</style>
+<body>
 
 <!-- Navbar (sit on top) -->
 <div id="myDiv" class="w3-top">
@@ -31,7 +49,9 @@
   <input type="submit" value="Go" id="submit">
 </form>
 
-<div id="ProductList" style="margin-top:30px"></div>
+<center>
+  <div id="ProductList" class="w3-ul w3-card-4 form-wrapper2"></div>
+</center>
 
 <script>
     if ('serviceWorker' in navigator) {

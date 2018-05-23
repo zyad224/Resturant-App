@@ -234,3 +234,39 @@ exports.showSinglePage = function(req,res){
         res.status(500).send('error ' + e);
     }
 }
+
+exports.sendFeedback = function (req, res) {
+    var userData = req.body;
+    console.log(userData);
+    if (userData == null) {
+        res.status(403).send('No data sent!')
+    }
+
+try{
+    var name= userData.na;
+    var id= userData.rId;
+    var feed= parseInt(userData.p);
+
+    var queryRestaurant = { rest_name: name, _id: id };
+
+    Restaurant.find(queryRestaurant).exec()
+        .then(function (result){
+            var oldFeed=parseInt( result[0].feedback);
+            var newFeed= (oldFeed+feed);
+            var myquery = { _id:id,rest_name:name};
+            var newvalues = { $set: { feedback: newFeed } };
+            Restaurant.updateOne(myquery, newvalues, function(err, res) {
+                if (err) throw err;
+                console.log("1 document updated");
+            });
+
+        });
+
+
+    res.render('index');
+} catch (e) {
+    res.status(500).send('error ' + e);
+}
+
+
+}

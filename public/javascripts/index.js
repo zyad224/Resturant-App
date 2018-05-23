@@ -36,37 +36,48 @@ function sendAjaxQuery(url, data) {
         type: 'POST',
         success: function (dataR) {
             var content = "";
-            $("#ProductList").empty();
+            if(dataR.length==0) {
+                alert("no rest");
+                console.log('in');
 
-            for (var i = 0; i < dataR.length; i++) {
-                var restaurant = dataR[i];
-                for(var j = 0; j < restaurant.length; j++){
+            }
+            else {
+                $("#ProductList").empty();
 
-                    var id = restaurant[j]._id;
-                    var name = restaurant[j].rest_name;
-                    var type  = restaurant[j].cusine_type;
-                    var rank = restaurant[j].ranking;
-                    var feed = restaurant[j].feedback;
-                    var post = restaurant[j].postcode;
-                    var image = restaurant[j].image;
+                for (var i = 0; i < dataR.length; i++) {
+                    var restaurant = dataR[i];
+                    for (var j = 0; j < restaurant.length; j++) {
 
-                    content = '<ul class="form-wrapper">' +
-                        '<li class="w3-bar">' +
-                        '<form  action="/sendInfo" method="post"><input id="id" name="ObjectId" type="hidden" value="'+id+'"><button type="submit">Go</button>'+
-                        '<div id="rests" >'
-                        +"Restaurant ID: "+id+" "
-                        +"Restaurant Name: "+name+" "
-                        +"Cusine Type: "+" " +type+" "
-                        +"Ranking" + " " + rank+ " "
-                        +"Feedback" + " " + feed+ " "
-                        +"postcode" + " " + post+ " "
-                        +"Image" + " " +image+ "" +
-                        '</div></form></li></ul>';
-                    //check the id if it does not exist, append
-                    if($("#" + id).length == 0) {
-                        $('#ProductList').append(content);
-                        //change div id as a _id
-                        $('#rests').attr('id',id);
+                        var id = restaurant[j]._id;
+                        var name = restaurant[j].rest_name;
+                        var type = restaurant[j].cusine_type;
+                        var rank = restaurant[j].ranking;
+                        var feed = restaurant[j].feedback;
+                        var post = restaurant[j].postcode;
+                        var image = restaurant[j].image;
+                        var lat=restaurant[j].lat;
+                        var lng=restaurant[j].lng;
+
+                        content= '<li style="background-color: whitesmoke">' +
+                            '<form action="/sendInfo" method="post"><input id="id" name="ObjectId" type="hidden" value="'+id+'">'+
+                            '<div class="w3-bar-item" id="rests">' +
+                            '<span><img src="'+image    +'" align="left" class="w3-bar-item w3-circle w3-hide-small" style="width:85px; height:75px"/></span>'+
+                            '<span class="w3-large">'+name+'</span><br>'+
+                            '<span>'
+                            +"Cusine Type: "+" " +type+" "
+                            +"Ranking: " + " " + rank+ " "
+                            +"Postcode: " + " " + post+ " "+
+                            '</span>'+
+                            '</div>' +
+                            '<button type="submit" class="button button4">Restaurant Page</button>'+
+                            '</form>'+
+                            '</li>';
+                        //check the id if it does not exist, append
+                        if ($("#" + id).length == 0) {
+                            $('#ProductList').append(content);
+                            //change div id as a _id
+                            $('#rests').attr('id', id);
+                        }
                     }
                 }
             }
@@ -76,6 +87,7 @@ function sendAjaxQuery(url, data) {
             alert('Error: ' + error.message);
         }
     });
+
 }
 
 
@@ -132,6 +144,23 @@ function map(url, data) {
     });
 }
 
+function feedback(url, data) {
+    $.ajax({
+        url: url ,
+        data: data,
+        dataType: 'json',
+        type: 'POST',
+        success: function (dataR) {
+            var content = "";
+            console.log(dataR);
+
+            //document.getElementById('results').innerHTML = JSON.stringify(ret);
+        },
+        error: function (xhr, status, error) {
+            alert('Error: ' + error.message);
+        }
+    });
+}
 function clearMarkers(){
     setMapOnAll(null);
 }
@@ -162,5 +191,17 @@ function onSubmitMap(url) {
     console.log(data);
     // const data = JSON.stringify($(this).serializeArray());
     map(url, data);
+    event.preventDefault();
+}
+
+function onSubmitFeedback(url) {
+    var formArray= $("form").serializeArray();
+    var data={};
+    for (index in formArray){
+        data[formArray[index].name]= formArray[index].value;
+    }
+    console.log(data);
+    // const data = JSON.stringify($(this).serializeArray());
+    feedback(url, data);
     event.preventDefault();
 }

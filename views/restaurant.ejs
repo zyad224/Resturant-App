@@ -56,11 +56,11 @@
 <!-- Navbar (sit on top) -->
 <div id="myDiv" class="w3-top">
     <div class="w3-bar w3-white w3-padding w3-card myDiv2" style="letter-spacing:4px;">
-        <a id="homePage"  href="#home" class="w3-bar-item w3-button"><%=restResult.rest_name%></a>
+        <a id="homePage"  href="/index" class="w3-bar-item w3-button">Home</a>
         <!-- Right-sided navbar links. Hide them on small screens -->
         <div class="w3-right w3-hide-small">
             <a href="#about" class="w3-bar-item w3-button">About</a>
-            <a href="#menu" class="w3-bar-item w3-button">Menu</a>
+            <!--<a href="#menu" class="w3-bar-item w3-button">Menu</a>-->
             <a href="#contact" class="w3-bar-item w3-button">Contact</a>
             <a href="#map" class="w3-bar-item w3-button">Map</a>
             <a href="#feedback" class="w3-bar-item w3-button">Feedback</a>
@@ -70,10 +70,7 @@
 
 <!-- Header -->
 <header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
-    <img class="w3-image" src=<%=restResult.image%> alt="Hamburger Catering" width="1600" height="800">
-    <div class="w3-display-bottomleft w3-padding-large w3-opacity">
-        <h1 class="w3-xxlarge"><%=restResult.rest_name%></h1>
-    </div>
+
 </header>
 
 <!-- Page content -->
@@ -81,42 +78,17 @@
 
     <!-- About Section -->
     <div class="w3-row w3-padding-64" id="about">
-        <div class="w3-col m6 w3-padding-large w3-hide-small">
-            <img src="Images/tablesetting2.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
-        </div>
+        <img class="w3-round w3-image w3-opacity-min" src=<%=restResult.image%> width="400px" height="300px">
+        <!--<div class="w3-col m6 w3-padding-large">-->
+            <!--<p class="w3-large">Cusine Type:<%=restResult.rest_name%></p>-->
+            <!--<p class="w3-large">Cusine Type:<%=restResult.cusine_type%></p>-->
+            <!--<p class="w3-large w3-text-grey w3-hide-medium"> Ranking:<%=restResult.ranking%></p>-->
 
+        <!--</div>-->
         <div class="w3-col m6 w3-padding-large">
-            <h1 class="w3-center">About Catering</h1><br>
-            <h5 class="w3-center">Tradition since 1889</h5>
-            <p class="w3-large"><%=restResult.cusine_type%></p>
-            <p class="w3-large w3-text-grey w3-hide-medium"> <%=restResult.ranking%> Add Here Restaurant About Info</p>
-        </div>
-    </div>
-
-    <hr>
-
-    <!-- Menu Section -->
-    <div class="w3-row w3-padding-64" id="menu">
-        <div class="w3-col l6 w3-padding-large">
-            <h1 class="w3-center">Our Menu</h1><br>
-            <h4>Bread Basket</h4>
-            <p class="w3-text-grey">Assortment of fresh baked fruit breads and muffins 5.50</p><br>
-
-            <h4>Honey Almond Granola with Fruits</h4>
-            <p class="w3-text-grey">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p><br>
-
-            <h4>Belgian Waffle</h4>
-            <p class="w3-text-grey">Vanilla flavored batter with malted flour 7.50</p><br>
-
-            <h4>Scrambled eggs</h4>
-            <p class="w3-text-grey">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p><br>
-
-            <h4>Blueberry Pancakes</h4>
-            <p class="w3-text-grey">With syrup, butter and lots of berries 8.50</p>
-        </div>
-
-        <div class="w3-col l6 w3-padding-large">
-            <img src="Images/tablesetting.jpg" class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:100%">
+        <p class="w3-text-blue-grey w3-large"><b>Restaurant name:<%=restResult.rest_name%></b></p>
+        <p class="w3-text-blue-grey w3-large"><b>Cuisine Type:<%=restResult.cusine_type%></b></p>
+        <p class="w3-text-blue-grey w3-large"><b>User Ratings:<%=restResult.feedback%> points</b></p>
         </div>
     </div>
 
@@ -125,16 +97,9 @@
     <!-- Contact Section -->
     <div class="w3-container w3-padding-64" id="contact">
         <h1>Contact</h1><br>
-        <p>We offer full-service catering for any event, large or small. We understand your needs and we will cater the food to satisfy the biggerst criteria of them all, both look and taste. Do not hesitate to contact us.</p>
-        <p class="w3-text-blue-grey w3-large"><b><%=restResult.postcode%></b></p>
-        <p>You can also contact us by phone 00553123-2323 or email catering@catering.com, or you can send us a message here:</p>
-        <form action="">
-            <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
-            <p><input class="w3-input w3-padding-16" type="number" placeholder="How many people" required name="People"></p>
-            <p><input class="w3-input w3-padding-16" type="datetime-local" placeholder="Date and time" required name="date" value="2017-11-16T20:00"></p>
-            <p><input class="w3-input w3-padding-16" type="text" placeholder="Message \ Special requirements" required name="Message"></p>
-            <p><button class="w3-button w3-light-grey w3-section" type="submit">SEND MESSAGE</button></p>
-        </form>
+        <p class="w3-text-blue-grey w3-large"><b>Postcode:<%=restResult.postcode%></b></p>
+        <p class="w3-text-blue-grey w3-large"><b>Telephone:<%=restResult.telephone%></b></p>
+        <p class="w3-text-blue-grey w3-large"><b>Address:<%=restResult.address%></b></p>
     </div>
 
     <hr>
@@ -150,10 +115,15 @@
                         zoom: 16,
                         center: uluru
                     });
+                    userPos = {
+                        lat: <%=restResult.lat%>,
+                        lng: <%=restResult.lng%>
+                    };
                     var marker = new google.maps.Marker({
-                        position: uluru,
+                        position: userPos,
                         map: map
                     });
+                    map.setCenter(userPos);
                 }
             </script>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcm6sCcEcvIHv7ILLDVSDbbkN2SOBgGmw&libraries=places&callback=initMap" async defer></script>
@@ -165,16 +135,16 @@
     <!--Feedback Section-->
     <div class="w3-container w3-padding-64" class="container" id="feedback">
         <h1>Give Feedback</h1>
-        <div><%=restResult.feedback%></div>
-        <form action="/">
-            <label for="fname">First Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+        <div>Points The Restaurant have: <%=restResult.feedback%></div>
+        <form action="/sendFeedback" method="post" onsubmit="onSubmitFeedback('/sendFeedback')">
+            <label for="points">Points</label>
+            <input type="text" id="p" name="p" placeholder="Insert number of points..">
 
-            <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+            <label for='Restaurant'>Restaurant Name</label>
+            <input type="text" name="na" id="na" readonly value=<%=restResult.rest_name%>>
 
-            <label for="subject">Subject</label>
-            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+            <label for='RestaurantID' style="display: none">Restaurant Id</label>
+            <input type="text" name="rId" id="rId" style="display: none" readonly value=<%=restResult._id %>>
 
             <input type="submit" value="Submit">
         </form>

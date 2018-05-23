@@ -58,6 +58,8 @@ router.get('/signup', function(req, res, next) {
 //router.post('/restaurant',rest.getSpecificRest);
 
 router.post('/sendInfo',rest.showSinglePage);
+router.post('/sendFeedback',rest.sendFeedback);
+
 
 router.post('/login',user.checkCredential);
 
