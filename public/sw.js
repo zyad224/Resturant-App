@@ -8,12 +8,15 @@ var cached_urls = [
     '/stylesheets/style.css',
     '/css/main.css',
     '/css/util.css',
+    '/css/dark-snake.css',
+    '/css/main-snake.css',
 
 
     '/javascripts/index.js',
     '/javascripts/login.js',
     '/javascripts/signup.js',
     '/js/main.js',
+    '/js/snake.js',
 
 
     '/index',
