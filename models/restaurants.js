@@ -1,3 +1,8 @@
+/*
+This is the model of the restaurant.
+Every restaurant has name, cusine type,telephone,
+feedback,postcode, address,latitude, longitude, and image.
+ */
 var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
