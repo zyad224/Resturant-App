@@ -1,5 +1,9 @@
 
-
+/*
+This is the AJAX responsible to communicate with the user.checkCredential function in the
+controller. it sends the user credential data to eb checked. if its correct it redirect
+the user to add a restaurant page. if not it asks the user to register.
+ */
 function sendCredentials(url, data) {
     $.ajax({
         url: url ,
@@ -25,6 +29,11 @@ function sendCredentials(url, data) {
     });
 }
 
+/*
+This method recieves the data from the /login url.
+It sends the url and data to the sendCredentials function for
+AJAX communication.
+ */
 function onSubmitCredential(url) {
     var formArray= $("form").serializeArray();
     var data={};

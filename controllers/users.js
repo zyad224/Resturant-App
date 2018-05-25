@@ -1,3 +1,11 @@
+/*
+This is the User controller. it includes methods to
+add a new user to the database and check user credentials when they login .
+
+addUser: is used by socket.io to register new users in the system.
+checkCredentials: is used by AJAX to check user credentials when they login.
+ */
+
 var User = require('../models/users');
 
 var express =   require("express");
@@ -8,6 +16,12 @@ var bodyParser = require('body-parser');
 var NodeGeocoder=require('node-geocoder');
 var session = require('express-session');
 
+/*
+This method is responsible add a new user to the system. it recieves
+the username and password of the new user then checks if these credentials already
+exists or not. it returns v=false if the crednetials exists and true otherwise. This
+method is called by a scoket.io. Communication is via socket.io
+ */
 exports.addUser=function(username,psw,v){
 
 
@@ -21,9 +35,6 @@ exports.addUser=function(username,psw,v){
             if (result.length > 0) {
                 v(false);
 
-              //  alert("user exist");
-              //  console.log(result);
-                //alert("user already exists");
             }
             else {
                 var user = new User({
@@ -32,11 +43,10 @@ exports.addUser=function(username,psw,v){
                 });
 
                 user.save(function (err, results) {
-                    //console.log(results);
+
                 });
                 v(true);
 
-               // alert("user added to the system");
 
             }
         })
@@ -44,6 +54,11 @@ exports.addUser=function(username,psw,v){
 
 
 };
+
+/*
+This method is responsible to check the credentials of the user when they
+login. it return the results if its found. null otherwise. Communication is via AJAX.
+ */
 exports.checkCredential=function(req,res){
     var userData = req.body;
 // console.log(userData);

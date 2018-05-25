@@ -1,3 +1,9 @@
+/*
+This is the Restaurant controller. it includes methods to
+insert new restaurant, get all restaurants, upload photos to restaurants,
+insert restaurants feedback, and search restaurants (map and search bar).
+ */
+
 var Restaurant = require('../models/restaurants');
 
 var express =   require("express");
@@ -9,8 +15,10 @@ var NodeGeocoder=require('node-geocoder');
 
 /*
 This method is responsible to fetch the requested
-data from the system database then return the data
-in a json format to the html page (front end).
+restaurants data from the system database then return the data
+in a json format to the html page (front end). This function recieves whatever
+the user types in the search bar then search the database for these information. Promises are
+used to enhance readability and efficiency. Communication is via AJAX and JSON
  */
 exports.getRest = function (req, res) {
     var userData = req.body;
@@ -89,9 +97,14 @@ exports.getRest = function (req, res) {
     } catch (e) {
         res.status(500).send('error ' + e);
     }
-}
+};
 
 
+/*
+This method is responsible to upload an image for a the restaurant being registered.
+The Image is saved under the directory "avatar" then after that the path of the image is
+saved in the database in the restaurant entry. Communication is via AJAX and JSON
+ */
 exports.uploadImage=function (req, res) {
     req.file('avatar').upload({dirname:'../../public/avatar'},function (err, uploadedFiles) {
         if (err) return res.send(500, err);
@@ -99,9 +112,7 @@ exports.uploadImage=function (req, res) {
         var path="http://localhost:3003"+uploadedFiles[0].fd.slice(index-1);
        console.log(path);
 
-        // Restaurant.findOne({}, {}, { sort: { 'created_at' : -1 } }, function(err, post) {
-        //     console.log( post );
-        // });
+
         try{
 
             var myquery = { image:null};
@@ -111,26 +122,21 @@ exports.uploadImage=function (req, res) {
                 console.log("1 document updated");
             });
 
-            // var restaurant=new Restaurant({
-            //     image:path
-            // });
-            // restaurant.save(function (err, results) {
-            //     console.log(results._id);
-            //     if (err)
-            //         res.status(500).send('Invalid data!');
-            // });
+
             res.render('index');
         } catch (e) {
             res.status(500).send('error ' + e);
         }
 
-        // return res.json({
-        //     message: uploadedFiles.length + ' file(s) uploaded successfully!',
-        //     files: uploadedFiles[0].fd
-        // });
+
     });
 };
 
+/*
+This method is responsible to insert a new restaurant in the database.
+It recieves the information from the user via AJAX then creates a new restaurant variable, populate it,
+and saves it. Communication is via AJAX and JSON
+ */
 exports.insert = function (req, res) {
     var userData = req.body;
     if (userData == null) {
@@ -159,8 +165,13 @@ exports.insert = function (req, res) {
     } catch (e) {
         res.status(500).send('error ' + e);
     }
-}
+};
 
+/*
+This method is responsible to fetch restaurants depending on user input
+(postcode, restaurant name, cusine type). This method is used in the map search when
+a user tries to find a restaurant by postalcode,name,type). Communication is via AJAX and JSON
+ */
 exports.getLocation=function(req,res){
     var userData = req.body;
    // console.log(userData);
@@ -194,30 +205,13 @@ exports.getLocation=function(req,res){
     }
 
 
-}
+};
 
-exports.getSpecificRest= function(req,res){
-    var restID = req.body.objectID;
-
-    if (restID == null) {
-        res.status(403).send('No data sent!')
-    }
-
-    try{
-        var queryRestaurantID = { _id: restID };
-        Restaurant.find(queryRestaurantID).exec()
-            .then(function(result){
-                console.log(result);
-                res.send(JSON.stringify(result));
-
-        });
-
-    } catch (e){
-        res.status(500).send('error ' + e);
-
-    }
-}
-
+/*
+This method is responsible to return the data of a specific restaurant when
+the user click on that restaurant. The data then will viewed in a html page to show
+the information of that restaurant to the user. Communication is via AJAX and JSON
+ */
 exports.showSinglePage = function(req,res){
     var rest = req.body;
     if (rest == null) {
@@ -232,8 +226,13 @@ exports.showSinglePage = function(req,res){
     } catch (e){
         res.status(500).send('error ' + e);
     }
-}
+};
 
+/*
+This method is responsible to update the points of restaurant in the database.
+It receives the feedback from the use in point. it updates the points in database by:
+old points + new points. Communication is via AJAX and JSON
+ */
 exports.sendFeedback = function (req, res) {
     var userData = req.body;
     console.log(userData);
@@ -268,4 +267,4 @@ try{
 }
 
 
-}
+};

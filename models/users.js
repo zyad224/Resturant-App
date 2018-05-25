@@ -1,3 +1,7 @@
+/*
+This is the model of the user.
+Every user has username and password.
+ */
 var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;

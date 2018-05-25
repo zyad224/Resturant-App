@@ -1,6 +1,17 @@
+/*
+The service worker is a js works in the background. it
+fetches the pages from the cache if found. if not found,
+it fetches the page from the server then adds it to the cache.
+
+It supports offline experience and it enables the usr to play the snake game
+when they are offline until the network comes back.
+ */
+
 var cache_name = 'gih-cache';
 
-
+/*
+The pages already exists in the cache.
+ */
 var cached_urls = [
     '/stylesheets/index.css',
     '/stylesheets/insert.css',
@@ -23,6 +34,10 @@ var cached_urls = [
 
 ];
 
+/*
+This method is responsible to intall the service worker in
+the first run.
+ */
 self.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open(cache_name)
@@ -32,6 +47,9 @@ self.addEventListener('install', function(event) {
     );
 });
 
+/*
+This method is responsible to remove old cache.
+ */
 self.addEventListener('activate', function(event) {
     event.waitUntil(
         caches.keys().then(function(cacheNames) {
@@ -46,6 +64,14 @@ self.addEventListener('activate', function(event) {
     );
 });
 
+/*
+This is the fetch method in the service worker.
+First it tries to fetch the page from the cache. if not found
+if fetches it from the server then adds it in the cache.
+It also support offline expierience. if the user is offline or any error
+happened, the user can play a snake game until the problem is solved or the
+network connection is back.
+ */
 self.addEventListener('fetch', function(event) {
     console.log('Fetch event for ', event.request.url);
     event.respondWith(

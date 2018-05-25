@@ -28,6 +28,11 @@ function initMap() {
 
 }
 
+/*
+This is the AJAX responsible to communicate with the index and insert urls.
+The controller functions insert and getRest and insert communicate with this
+method.
+ */
 function sendAjaxQuery(url, data) {
     $.ajax({
         url: url ,
@@ -91,6 +96,13 @@ function sendAjaxQuery(url, data) {
 }
 
 
+/*
+This is the AJAX responsible to communicate with the getlocation function in the
+controller. it recieves restaurants information and plot them on Google Map.
+it uses clearMarker to clear all the markers from the map. it also uses the
+user location to compute the distance between the user and the restaurants in order
+to show restaurants only in certain radius.
+ */
 function map(url, data) {
     $.ajax({
         url: url ,
@@ -144,6 +156,10 @@ function map(url, data) {
     });
 }
 
+/*
+This is the AJAX responsible to communicate with the sendFeedback function in the
+controller. it sends the updated points of a restaurant to the client (html page).
+ */
 function feedback(url, data) {
     $.ajax({
         url: url ,
@@ -188,6 +204,11 @@ function setMapOnAll(map){
     }
 }
 
+/*
+This method recieves the data from the insert and index url.
+It sends the url and data to the sendAjaxQuery function for
+AJAX communication.
+ */
 function onSubmit(url) {
     var formArray= $("form").serializeArray();
     var data={};
@@ -199,6 +220,7 @@ function onSubmit(url) {
     event.preventDefault();
 }
 
+<<<<<<< HEAD
 function onSubmitInsert(url) {
     var formArray= $("form").serializeArray();
     var data={};
@@ -210,6 +232,12 @@ function onSubmitInsert(url) {
     event.preventDefault();
 }
 
+=======
+/*
+This method recieves the data from /geolocation url.
+It sends the url and data to map function for AJAX communication.
+ */
+>>>>>>> documentation
 function onSubmitMap(url) {
     var formArray= $("form").serializeArray();
     var data={};
@@ -222,6 +250,10 @@ function onSubmitMap(url) {
     event.preventDefault();
 }
 
+/*
+This method recieves the data from /sendFeedback url.
+It sends the url and data to feedback function for AJAX communication.
+ */
 function onSubmitFeedback(url) {
     var formArray= $("form").serializeArray();
     var data={};
