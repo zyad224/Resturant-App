@@ -6,6 +6,7 @@ var path = require('path');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var NodeGeocoder=require('node-geocoder');
+var session = require('express-session');
 
 exports.addUser=function(username,psw,v){
 
@@ -57,12 +58,16 @@ exports.checkCredential=function(req,res){
     var query = { user_name: userData.usr, password: userData.psw};
 
 
+
         User.find(query).exec()
             .then(function (result) {
                 //console.log(result);
 
                 if (result.length != 0) {
                    // console.log(result);
+                    req.session.username=userData.usr;
+                    console.log(req.session);
+                    console.log('session has been created');
                     res.send(JSON.stringify(result));
                    // res.render("insert",{dataArray:result});
                 }

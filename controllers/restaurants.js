@@ -140,7 +140,6 @@ exports.insert = function (req, res) {
         var restaurant = new Restaurant({
             rest_name: userData.rest,
             cusine_type: userData.cusine,
-            ranking: userData.rank,
             feedback: userData.feed,
             postcode: userData.postc,
             address:userData.address,

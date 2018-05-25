@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel='stylesheet' href='/stylesheets/index.css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/javascripts/index.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<style>
+    .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .button4 {border-radius: 9px; alignment: right}
+
+</style>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div id="myDiv" class="w3-top">
+    <div class="w3-bar w3-white w3-padding w3-card myDiv2" style="letter-spacing:4px;">
+        <a id="homePage"  href="index" class="w3-bar-item w3-button">Main Page</a>
+        <!-- Right-sided navbar links. Hide them on small screens -->
+        <div class="w3-right w3-hide-small">
+            <a href="#" class="w3-bar-item w3-button">Welcome <%=username %></a>
+            <a href="logout" class="w3-bar-item w3-button">Logout</a>
+            <a href="insert" class="w3-bar-item w3-button">Add restaurant</a>
+            <a href="geolocation" class="w3-bar-item w3-button">Map</a>
+            <a href="about" class="w3-bar-item w3-button">About Us</a>
+        </div>
+    </div>
+</div>
+
+<form class="form-wrapper" id=“xForm" onsubmit="onSubmit('/index')">
+    <input type="text" name="rest" id="rest"  placeholder="Search for..." required>
+    <input type="submit" value="Go" id="submit">
+</form>
+
+<center>
+    <div id="ProductList" class="w3-ul w3-card-4 form-wrapper2"></div>
+</center>
+
+</body>
+</html>

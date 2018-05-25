@@ -23,8 +23,13 @@ router.get('/geolocation',function(req,res,next){
 });
 
 /* GET insert page. */
-router.get('/insert', function(req, res, next) {
-    res.render('insert', { title: 'Restaurant Sign Up Form'  });
+router.get('/insert', function(req, res) {
+    if(req.session.username){
+        res.render('insert', { title: 'Restaurant Sign Up Form'  });
+    }else{
+        res.redirect('login');
+    }
+
 });
 
 router.get('/login', function(req, res, next) {
@@ -65,6 +70,19 @@ router.post('/login',user.checkCredential);
 
 router.get('/about',function(req,res,next){
     res.render('about');
+});
+
+router.get('/dashboard',function(req,res){
+    if(req.session.username){
+        res.render('dashboard',{username : req.session.username});
+    }else{
+        res.redirect('login');
+    }
+});
+
+router.get('/logout', function (req, res) {
+    req.session.username = null;
+    res.redirect('index');
 });
 
 

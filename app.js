@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
+var session = require('express-session');
 
 var app = express();
 
@@ -20,6 +21,15 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(session({
+    secret : 'secret',
+    resave : true,
+    saveUninitialized: false,
+    cookie : {
+        maxAge : 1000 * 60 * 3,
+    },
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);

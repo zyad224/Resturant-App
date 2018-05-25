@@ -11,7 +11,7 @@ function sendCredentials(url, data) {
             console.log(dataR);
             if(dataR.length>0){
                 alert(dataR[0].user_name);
-                window.location.href = '/insert';
+                window.location.href = '/dashboard';
             }
 
             else{

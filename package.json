@@ -12,6 +12,7 @@
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
     "express": "~4.15.5",
+    "express-session": "^1.15.6",
     "formidable": "^1.2.1",
     "geocoder": "^0.2.3",
     "jquery": "~3.3.1",
@@ -24,6 +25,7 @@
     "npm": "^5.8.0",
     "promise": "^8.0.1",
     "serve-favicon": "~2.4.5",
+    "session-file-store": "^1.2.0",
     "skipper": "~0.8.5",
     "socket.io": "^2.1.0",
     "spherical-geometry-js": "^1.0.1"

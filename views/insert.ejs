@@ -98,28 +98,23 @@
 <body>
 <center> <h3><%= title %></h3></center>
 
-<form id=“xForm" onsubmit="onSubmit('/insert')">
+<form id=“xForm" onsubmit="onSubmitInsert('/insert')">
     <label for='restaurant'>Restaurant:</label>
-    <input type="text" name="rest" id="rest">
+    <input type="text" name="rest" id="rest" required>
 
     <p>
         <label for='cusinetype'>Cusine Type:</label>
-        <input type="text" name="cusine" id="cusine">
-    </p>
-
-    <p>
-        <label for='ranking'>Ranking:</label>
-        <input type="text" name="rank" id="rank">
+        <input type="text" name="cusine" id="cusine" required>
     </p>
 
     <p>
         <label for='feedback'>Feedback:</label>
-        <input type="text" name="feed" id="feed">
+        <input type="text" name="feed" id="feed" required>
     </p>
 
     <p>
         <label for='postcode'>Postcode:</label>
-        <input type="text" name="postc" id="postc" value="S3 7LJ">
+        <input type="text" name="postc" id="postc" value="S3 7LJ" required>
     </p>
     <input class="button" type="button" value="Calculate" id="latlngBtn"><br><br><br>
 
@@ -132,10 +127,12 @@
 
     <p>
         <label for='address'>Address:</label>
-        <input type="text" name="address" id="address">
+        <input type="text" name="address" id="address" required>
     </p>
 
-    <p><input class="button" type="submit" name="g" value="Submit" id="g"></p>
+    <p><input class="button" type="submit" name="g" value="Submit" id="g" onclick="check(this.form)"></p>
+
+
 </form>
 <br><br>
 
@@ -143,7 +140,7 @@
 
 <!--<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Take photo</button>-->
 <!--<input type="button" id="takePhoto" onclick="window.open('webrtc')" style="display:none" value="Take Photo">-->
-<form action="/upload" method="post" enctype="multipart/form-data">
+<form name="uploadImage" id="uploadImage" action="/upload" method="post" enctype="multipart/form-data" onsubmit="return checkImage()">
     <input type="file" name="avatar" id="fileToUpload" style="display:none">
     <input class="button" type="submit" value="Upload File" name="submit" id="submitImage" style="display:none">
 </form>
@@ -174,16 +171,45 @@
 
 <script>
 
-    var sub=document.getElementById("g"),
-        hidetakephoto=document.getElementById("takePhoto"),
-        hidefile=document.getElementById("fileToUpload"),
-        hidesubmit=document.getElementById("submitImage");
-    sub.onclick=function(){
+    var sub =document.getElementById('g');
+    sub.onclick=function () {
+        check(this.form);
         this.form.submit;
-        hidetakephoto.style.display="inline";
-        hidefile.style.display="inline";
-        hidesubmit.style.display="inline";
+        showUpload(check(this.form));
+
     }
+
+    function check(form){
+        if(form.name.value==''||form.cusine.value==''||form.feed.value==''||
+           form.postc.value==''||form.address.value==''){
+            return false;
+        }
+        return true;
+
+    }
+
+    function showUpload(isLack){
+        var hidetakephoto=document.getElementById("takePhoto"),
+            hidefile=document.getElementById("fileToUpload"),
+            hidesubmit=document.getElementById("submitImage");
+        if (isLack) {
+            hidetakephoto.style.display = "inline";
+            hidefile.style.display = "inline";
+            hidesubmit.style.display = "inline";
+        }else{
+
+        }
+
+    }
+        function checkImage() {
+            if (document.getElementById('fileToUpload').value =='') {
+                alert("please upload your image!");
+                return false;
+            } else {
+                return true;
+            }
+        }
+
     var geocoder = new google.maps.Geocoder();
     var latlngbtn=document.getElementById("latlngBtn");
     latlngbtn.onclick=function(){
@@ -247,6 +273,7 @@
         download.href = dataURL;
 
     }
+
 </script>
 
 

@@ -161,6 +161,24 @@ function feedback(url, data) {
         }
     });
 }
+
+function insert(url, data) {
+    $.ajax({
+        url: url ,
+        data: data,
+        dataType: 'json',
+        type: 'POST',
+        success: function (dataR) {
+            var content = "";
+            //console.log(dataR);
+
+            //document.getElementById('results').innerHTML = JSON.stringify(ret);
+        },
+        error: function (xhr, status, error) {
+            alert('Error: ' + error.message);
+        }
+    });
+}
 function clearMarkers(){
     setMapOnAll(null);
 }
@@ -181,6 +199,16 @@ function onSubmit(url) {
     event.preventDefault();
 }
 
+function onSubmitInsert(url) {
+    var formArray= $("form").serializeArray();
+    var data={};
+    for (index in formArray){
+        data[formArray[index].name]= formArray[index].value;
+    }
+    // const data = JSON.stringify($(this).serializeArray());
+    insert(url, data);
+    event.preventDefault();
+}
 
 function onSubmitMap(url) {
     var formArray= $("form").serializeArray();

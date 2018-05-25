@@ -13,15 +13,12 @@ var cached_urls = [
 
 
     '/javascripts/index.js',
-    '/javascripts/login.js',
-    '/javascripts/signup.js',
     '/js/main.js',
     '/js/snake.js',
+    '/Images/abc.jpg',
 
 
     '/index',
-    '/signup',
-    '/login',
     '/errorPage'
 
 ];
