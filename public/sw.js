@@ -7,7 +7,7 @@ It supports offline experience and it enables the usr to play the snake game
 when they are offline until the network comes back.
  */
 
-var cache_name = 'gih-cache';
+var cache_name = 'cache';
 
 /*
 The pages already exists in the cache.

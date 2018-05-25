@@ -14,7 +14,7 @@ function sendCredentials(url, data) {
             var content = "";
             console.log(dataR);
             if(dataR.length>0){
-                alert(dataR[0].user_name);
+                alert('Welcome '+dataR[0].user_name+'!');
                 window.location.href = '/dashboard';
             }
 

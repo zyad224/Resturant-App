@@ -32,8 +32,7 @@ router.get('/insert', function(req, res) {
 
 });
 
-router.get('/login', function(req, res, next) {
-
+router.get('/login', function(req, res) {
     res.render('login');
 });
 router.get('/webrtc', function(req, res) {
