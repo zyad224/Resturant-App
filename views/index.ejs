@@ -45,23 +45,13 @@
 </div>
 
 <form class="form-wrapper" id=“xForm" onsubmit="onSubmit('/index')">
-  <input type="text" name="rest" id="rest"  placeholder="Search for..." required>
-  <input type="submit" value="Go" id="submit">
+    <input type="text" name="rest" id="rest"  placeholder="Search for..." required>
+    <input type="submit" value="Go" id="submit">
 </form>
 
 <center>
-  <div id="ProductList" class="w3-ul w3-card-4 form-wrapper2"></div>
+  <div id="ProductList" class="w3-ul w3-card-4 form-wrapper2" ></div>
 </center>
-
-<script>
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js').then(function(registration) {
-            console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        }).catch(function(err) {
-            console.log('ServiceWorker registration failed: ', err);
-        });
-    }
-</script>
 
 </body>
 </html>

@@ -111,7 +111,7 @@
 
     <p>
         <label for='feedback'>Feedback:</label>
-        <input type="text" name="feed" id="feed" required>
+        <input type="text" name="feed" id="feed" value="4" required>
     </p>
 
     <p>
@@ -132,7 +132,7 @@
         <input type="text" name="address" id="address" required>
     </p>
 
-    <p><input class="button" type="submit" name="g" value="Submit" id="g" onclick="check(this.form)"></p>
+    <p><input class="button" type="button" name="g" value="Submit" id="g" onclick="check(this.form)"></p>
 
 
 </form>
@@ -172,6 +172,14 @@
 <div id="results" style="margin-top:30px"></div>
 
 <script>
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js').then(function(registration) {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }).catch(function(err) {
+            console.log('ServiceWorker registration failed: ', err);
+        });
+    }
 
     var sub =document.getElementById('g');
     sub.onclick=function () {

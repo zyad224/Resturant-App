@@ -30,7 +30,8 @@ var cached_urls = [
 
 
     '/index',
-    '/errorPage'
+    '/errorPage',
+    '/about'
 
 ];
 

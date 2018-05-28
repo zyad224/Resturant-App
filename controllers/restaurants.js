@@ -122,8 +122,7 @@ exports.uploadImage=function (req, res) {
                 console.log("1 document updated");
             });
 
-
-            res.render('index');
+            res.render('dashboard',{username : req.session.username});
         } catch (e) {
             res.status(500).send('error ' + e);
         }
