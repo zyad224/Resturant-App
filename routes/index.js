@@ -8,6 +8,10 @@ var user = require('../controllers/users');
 var initDB= require('../controllers/init');
 initDB.init();
 
+router.get('/', function(req, res, next) {
+    res.render('index', { title: 'My Form' });
+});
+
 
 /* GET home page. */
 router.get('/index', function(req, res, next) {
