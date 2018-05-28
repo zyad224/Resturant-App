@@ -6,12 +6,13 @@ function feedback(url, data) {
     $.ajax({
         url: url ,
         data: data,
-        //dataType: 'json',
+        dataType: 'json',
         type: 'POST',
         success: function (dataR) {
            // var content = "";
             //console.log(dataR);
             //document.getElementById('results').innerHTML = JSON.stringify(ret);
+            window.location.href="/index";
         },
         error: function (xhr, status, error) {
             alert('Error: ' + error.message);

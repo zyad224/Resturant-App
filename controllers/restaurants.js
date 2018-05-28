@@ -248,18 +248,18 @@ try{
         .then(function (result){
            // console.log(result[0].feedback);
             var oldFeed=parseInt(result[0].feedback);
-            var newFeed=(oldFeed+feed);
+            var newFeed=oldFeed+feed;
             console.log(newFeed);
 
             var myquery = { _id:id,rest_name:name};
             var newvalues = { $set: { feedback: newFeed } };
             Restaurant.updateOne(myquery, newvalues, function(err, res) {
-               // if (err) throw err;
-                console.log("1 document updated");
+               if (err) throw err;
+                //console.log("1 document updated");
             });
         });
-    res.render('/index');
-    // res.send(JSON.stringify("updated"));
+    //res.render('/index');
+    res.send(JSON.stringify(userData));
 } catch (e) {
     res.status(500).send('error ' + e);
 }

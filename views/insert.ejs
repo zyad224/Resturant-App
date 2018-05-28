@@ -120,10 +120,10 @@
     <input class="button" type="button" value="Calculate" id="latlngBtn"><br><br><br>
 
     <label for='latitude'>Latitude:</label>
-    <input type="text" name="lat" id="lat" readonly>
+    <input type="text" name="lat" id="lat" readonly required>
 
     <label for='longitude'>Longitude:</label>
-    <input type="text" name="lng" id="lng" readonly>
+    <input type="text" name="lng" id="lng" readonly required>
 
 
     <p>
@@ -171,7 +171,6 @@
 <div id="results" style="margin-top:30px"></div>
 
 <script>
-
     var sub =document.getElementById('g');
     sub.onclick=function () {
         check(this.form);
@@ -274,6 +273,7 @@
         download.href = dataURL;
 
     }
+
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./sw.js').then(function(registration) {
             console.log('ServiceWorker registration successful with scope: ', registration.scope);

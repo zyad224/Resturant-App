@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!--<script src="/javascripts/index.js"></script>-->
 <script src="/javascripts/feedback.js"></script>
 
@@ -82,12 +82,6 @@
     <!-- About Section -->
     <div class="w3-row w3-padding-64" id="about">
         <img class="w3-round w3-image w3-opacity-min" src=<%=restResult.image%> width="400px" height="300px">
-        <!--<div class="w3-col m6 w3-padding-large">-->
-            <!--<p class="w3-large">Cusine Type:<%=restResult.rest_name%></p>-->
-            <!--<p class="w3-large">Cusine Type:<%=restResult.cusine_type%></p>-->
-            <!--<p class="w3-large w3-text-grey w3-hide-medium"> Ranking:<%=restResult.ranking%></p>-->
-
-        <!--</div>-->
         <div class="w3-col m6 w3-padding-large">
         <p class="w3-text-blue-grey w3-large"><b>Restaurant name:<%=restResult.rest_name%></b></p>
         <p class="w3-text-blue-grey w3-large"><b>Cuisine Type:<%=restResult.cusine_type%></b></p>
@@ -137,9 +131,9 @@
 
     <!--Feedback Section-->
     <div class="w3-container w3-padding-64" class="container" id="feedback">
+        <form method="post" action="/sendFeedback" onsubmit="onSubmitFeedback('/sendFeedback')">
         <h1>Give Feedback</h1>
         <div>Points The Restaurant have: <%=restResult.feedback%></div>
-        <form method="post" action="/sendFeedback" onsubmit="onSubmitFeedback('/sendFeedback')">
             <label for="points">Points</label>
             <input type="text" id="p" name="p" placeholder="Insert number of points..">
 
@@ -152,8 +146,6 @@
             <input type="submit" value="Submit">
         </form>
     </div>
-
-
     <!-- End page content -->
 </div>
 
