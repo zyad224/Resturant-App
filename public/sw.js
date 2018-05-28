@@ -31,14 +31,13 @@ var cached_urls = [
     '/index',
     '/login',
     '/signup',
-    '/insert',
     '/errorPage',
     '/about'
 
 ];
 
 /*
-This method is responsible to intall the service worker in
+This method is responsible to install the service worker in
 the first run.
  */
 self.addEventListener('install', function(event) {
@@ -62,7 +61,7 @@ self.addEventListener('activate', function(event) {
             return Promise.all(
                 cacheNames.map(function(cacheName) {
                     if (cacheWhitelist.indexOf(cacheName) === -1) {
-                        //return caches.delete(cacheName);
+                        return caches.delete(cacheName);
                     }
                 })
             );
@@ -74,7 +73,7 @@ self.addEventListener('activate', function(event) {
 This is the fetch method in the service worker.
 First it tries to fetch the page from the cache. if not found
 if fetches it from the server then adds it in the cache.
-It also support offline expierience. if the user is offline or any error
+It also support offline experience. if the user is offline or any error
 happened, the user can play a snake game until the problem is solved or the
 network connection is back.
  */
