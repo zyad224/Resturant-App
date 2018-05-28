@@ -7,11 +7,11 @@ function insert(url, data) {
     $.ajax({
         url: url ,
         data: data,
-        dataType: 'json',
+        // dataType: 'json',
         type: 'POST',
         success: function (dataR) {
             var content = "";
-            //console.log(dataR);
+            console.log(dataR);
 
             //document.getElementById('results').innerHTML = JSON.stringify(ret);
         },
@@ -33,6 +33,7 @@ function onSubmitInsert(url) {
         data[formArray[index].name]= formArray[index].value;
     }
     // const data = JSON.stringify($(this).serializeArray());
+    console.log(data);
     insert(url, data);
     event.preventDefault();
 }

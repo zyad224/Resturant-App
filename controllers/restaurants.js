@@ -101,37 +101,6 @@ exports.getRest = function (req, res) {
 
 
 /*
-This method is responsible to upload an image for a the restaurant being registered.
-The Image is saved under the directory "avatar" then after that the path of the image is
-saved in the database in the restaurant entry. Communication is via AJAX and JSON
- */
-exports.uploadImage=function (req, res) {
-    req.file('avatar').upload({dirname:'../../public/avatar'},function (err, uploadedFiles) {
-        if (err) return res.send(500, err);
-        var index=uploadedFiles[0].fd.indexOf("avatar");
-        var path="http://localhost:3003"+uploadedFiles[0].fd.slice(index-1);
-       console.log(path);
-
-
-        try{
-
-            var myquery = { image:null};
-            var newvalues = { $set: { image: path } };
-            Restaurant.updateOne(myquery, newvalues, function(err, res) {
-                if (err) throw err;
-                console.log("1 document updated");
-            });
-
-            res.render('dashboard',{username : req.session.username});
-        } catch (e) {
-            res.status(500).send('error ' + e);
-        }
-
-
-    });
-};
-
-/*
 This method is responsible to insert a new restaurant in the database.
 It recieves the information from the user via AJAX then creates a new restaurant variable, populate it,
 and saves it. Communication is via AJAX and JSON
@@ -228,6 +197,35 @@ exports.showSinglePage = function(req,res){
 };
 
 /*
+This method is responsible to upload an image for a the restaurant being registered.
+The Image is saved under the directory "avatar" then after that the path of the image is
+saved in the database in the restaurant entry. Communication is via AJAX and JSON
+ */
+exports.uploadImage=function (req, res) {
+    req.file('avatar').upload({dirname:'../../public/avatar'},function (err, uploadedFiles) {
+        if (err) return res.send(500, err);
+        var index=uploadedFiles[0].fd.indexOf("avatar");
+        var path="http://localhost:3003"+uploadedFiles[0].fd.slice(index-1);
+        console.log(path);
+
+        try{
+
+            var myquery = { image:null};
+            var newvalues = { $set: { image: path } };
+            Restaurant.updateOne(myquery, newvalues, function(err, res) {
+                if (err) throw err;
+                console.log("1 document updated");
+            });
+            res.render('dashboard',{username : req.session.username});
+        } catch (e) {
+            res.status(500).send('error ' + e);
+        }
+
+
+    });
+};
+
+/*
 This method is responsible to update the points of restaurant in the database.
 It receives the feedback from the use in point. it updates the points in database by:
 old points + new points. Communication is via AJAX and JSON
@@ -248,22 +246,21 @@ try{
 
     Restaurant.find(queryRestaurant).exec()
         .then(function (result){
-            var oldFeed=parseInt( result[0].feedback);
-            var newFeed= (oldFeed+feed);
+           // console.log(result[0].feedback);
+            var oldFeed=parseInt(result[0].feedback);
+            var newFeed=(oldFeed+feed);
+            console.log(newFeed);
+
             var myquery = { _id:id,rest_name:name};
             var newvalues = { $set: { feedback: newFeed } };
             Restaurant.updateOne(myquery, newvalues, function(err, res) {
-                if (err) throw err;
+               // if (err) throw err;
                 console.log("1 document updated");
             });
-
         });
-
-
-    res.render('index');
+    res.render('/index');
+    // res.send(JSON.stringify("updated"));
 } catch (e) {
     res.status(500).send('error ' + e);
 }
-
-
 };

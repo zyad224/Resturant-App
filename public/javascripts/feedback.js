@@ -6,12 +6,11 @@ function feedback(url, data) {
     $.ajax({
         url: url ,
         data: data,
-        dataType: 'json',
+        //dataType: 'json',
         type: 'POST',
         success: function (dataR) {
-            var content = "";
-            console.log(dataR);
-
+           // var content = "";
+            //console.log(dataR);
             //document.getElementById('results').innerHTML = JSON.stringify(ret);
         },
         error: function (xhr, status, error) {
@@ -33,7 +32,7 @@ function onSubmitFeedback(url) {
         data[formArray[index].name]= formArray[index].value;
     }
     console.log(data);
-    // const data = JSON.stringify($(this).serializeArray());
+    //const data = JSON.stringify($(this).serializeArray());
     feedback(url, data);
     event.preventDefault();
 }

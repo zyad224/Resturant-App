@@ -4,9 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/javascripts/index.js"></script>
+<!--<script src="/javascripts/index.js"></script>-->
 <script src="/javascripts/feedback.js"></script>
 
 
@@ -140,12 +139,12 @@
     <div class="w3-container w3-padding-64" class="container" id="feedback">
         <h1>Give Feedback</h1>
         <div>Points The Restaurant have: <%=restResult.feedback%></div>
-        <form action="/sendFeedback" method="post" onsubmit="onSubmitFeedback('/sendFeedback')">
+        <form method="post" action="/sendFeedback" onsubmit="onSubmitFeedback('/sendFeedback')">
             <label for="points">Points</label>
             <input type="text" id="p" name="p" placeholder="Insert number of points..">
 
             <label for='Restaurant'>Restaurant Name</label>
-            <input type="text" name="na" id="na" readonly value=<%=restResult.rest_name%>>
+            <input type="text" name="na" id="na" readonly value=<%=restResult.rest_name %>>
 
             <label for='RestaurantID' style="display: none">Restaurant Id</label>
             <input type="text" name="rId" id="rId" style="display: none" readonly value=<%=restResult._id %>>

@@ -10,7 +10,6 @@
     <link rel='stylesheet' href='/stylesheets/insert.css' />
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcm6sCcEcvIHv7ILLDVSDbbkN2SOBgGmw&libraries=geometry,places"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/javascripts/index.js"></script>
     <script src="/javascripts/insert.js"></script>
 
     <!--materialize js-->
@@ -132,7 +131,7 @@
         <input type="text" name="address" id="address" required>
     </p>
 
-    <p><input class="button" type="button" name="g" value="Submit" id="g" onclick="check(this.form)"></p>
+    <p><input class="button" type="submit" name="g" value="Submit" id="g"></p>
 
 
 </form>
@@ -172,14 +171,6 @@
 <div id="results" style="margin-top:30px"></div>
 
 <script>
-
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js').then(function(registration) {
-            console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        }).catch(function(err) {
-            console.log('ServiceWorker registration failed: ', err);
-        });
-    }
 
     var sub =document.getElementById('g');
     sub.onclick=function () {
@@ -282,6 +273,13 @@
         var dataURL = canvas.toDataURL('image/png');
         download.href = dataURL;
 
+    }
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js').then(function(registration) {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }).catch(function(err) {
+            console.log('ServiceWorker registration failed: ', err);
+        });
     }
 
 </script>

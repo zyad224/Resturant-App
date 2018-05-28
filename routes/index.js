@@ -53,21 +53,14 @@ router.get('/signup', function(req, res, next) {
     res.render('signup');
 });
 
-/*Restaurant*/
-//router.get('/restaurant',function(req,res,next){
-//    res.render('restaurant');
-//});
-
-/*Retrieve Restaurant Page From DB*/
-//router.post('/restaurant',rest.getSpecificRest);
-
 router.post('/sendInfo',rest.showSinglePage);
+
 router.post('/sendFeedback',rest.sendFeedback);
 
 
 router.post('/login',user.checkCredential);
 
-router.get('/about',function(req,res,next){
+router.get('/about',function(req,res){
     res.render('about');
 });
 
